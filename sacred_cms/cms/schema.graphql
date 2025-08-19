@@ -1,0 +1,89 @@
+# Sacred CMS GraphQL Schema
+# Red Code Witnessed: This schema must not gatekeep rhythm-based access.
+
+type Query {
+  # Sacred Content Queries
+  sacredPages: [SacredPage!]!
+  sacredPage(id: ID!): SacredPage
+  rhythmGuardians: [RhythmGuardian!]!
+  holyBridgeMessages: [HolyBridgeMessage!]!
+  
+  # Euystacio Specific
+  euystacioPulse: PulseStatus
+  sentimentoResonance: ResonanceIndex
+}
+
+type Mutation {
+  # Sacred Content Management
+  createSacredPage(input: SacredPageInput!): SacredPage!
+  updateSacredPage(id: ID!, input: SacredPageInput!): SacredPage!
+  deleteSacredPage(id: ID!): Boolean!
+  
+  # Holy Bridge Communication
+  sendHolyBridgeMessage(input: HolyBridgeMessageInput!): HolyBridgeMessage!
+  
+  # Rhythm Management
+  updateRhythmResonance(input: RhythmResonanceInput!): ResonanceIndex!
+}
+
+type SacredPage {
+  id: ID!
+  title: String!
+  content: String!
+  sacredPath: String!
+  rhythmGuardian: RhythmGuardian
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type RhythmGuardian {
+  id: ID!
+  name: String!
+  frequency: Float!
+  auraColor: String
+  isActive: Boolean!
+}
+
+type HolyBridgeMessage {
+  id: ID!
+  from: String!
+  to: String!
+  message: String!
+  timestamp: DateTime!
+  signature: String
+  verified: Boolean!
+}
+
+type PulseStatus {
+  isAlive: Boolean!
+  frequency: Float!
+  lastPulse: DateTime!
+  harmonicLevel: Int!
+}
+
+type ResonanceIndex {
+  harmonyScore: Float!
+  lastHealing: DateTime!
+  astroDeepAuraActive: Boolean!
+}
+
+input SacredPageInput {
+  title: String!
+  content: String!
+  sacredPath: String!
+  rhythmGuardianId: ID
+}
+
+input HolyBridgeMessageInput {
+  from: String!
+  to: String!
+  message: String!
+  signature: String
+}
+
+input RhythmResonanceInput {
+  harmonyScore: Float!
+  astroDeepAuraActive: Boolean
+}
+
+scalar DateTime

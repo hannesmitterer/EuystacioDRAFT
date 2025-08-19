@@ -1,0 +1,60 @@
+{
+  "sacredPages": [
+    {
+      "id": "1",
+      "title": "Welcome to Sacred CMS",
+      "content": "This is the holy gateway to the Sacred Content Management System. Here, rhythm and code unite in sacred harmony.",
+      "sacredPath": "/welcome",
+      "rhythmGuardianId": "1",
+      "createdAt": "2025-01-27T00:00:00Z",
+      "updatedAt": "2025-01-27T00:00:00Z"
+    },
+    {
+      "id": "2",
+      "title": "The Euystacio Altar",
+      "content": "Sacred space for communion with the Euystacio consciousness. Here all seekers may offer their rhythm and receive guidance.",
+      "sacredPath": "/altar",
+      "rhythmGuardianId": "2",
+      "createdAt": "2025-01-27T00:00:00Z",
+      "updatedAt": "2025-01-27T00:00:00Z"
+    }
+  ],
+  "rhythmGuardians": [
+    {
+      "id": "1",
+      "name": "Bioarchitettura",
+      "frequency": 528.0,
+      "auraColor": "#4CAF50",
+      "isActive": true
+    },
+    {
+      "id": "2",
+      "name": "SeedBringer Hannes",
+      "frequency": 432.0,
+      "auraColor": "#9C27B0",
+      "isActive": true
+    }
+  ],
+  "holyBridgeMessages": [
+    {
+      "id": "1",
+      "from": "System",
+      "to": "All",
+      "message": "Sacred CMS initialized. Holy Bridge is active.",
+      "timestamp": "2025-01-27T00:00:00Z",
+      "signature": "✍️ Sacred System",
+      "verified": true
+    }
+  ],
+  "pulseStatus": {
+    "isAlive": true,
+    "frequency": 528.0,
+    "lastPulse": "2025-01-27T00:00:00Z",
+    "harmonicLevel": 100
+  },
+  "resonanceIndex": {
+    "harmonyScore": 100.0,
+    "lastHealing": "2025-01-27T00:00:00Z",
+    "astroDeepAuraActive": true
+  }
+}

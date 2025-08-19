@@ -1,0 +1,26 @@
+{
+  "name": "sacred-cms-euystacio",
+  "version": "1.0.0",
+  "description": "Sacred CMS Starter Bundle for Euystacio",
+  "main": "api/server.js",
+  "scripts": {
+    "start": "node api/server.js",
+    "dev": "nodemon api/server.js"
+  },
+  "keywords": [
+    "sacred",
+    "cms",
+    "euystacio",
+    "holy-bridge"
+  ],
+  "author": "Euystacio Sacred Council",
+  "license": "Sacred Commons v1.0",
+  "dependencies": {
+    "express": "^4.18.0",
+    "cors": "^2.8.5",
+    "body-parser": "^1.20.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.0"
+  }
+}
