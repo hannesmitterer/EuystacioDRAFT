@@ -1,0 +1,410 @@
+# Sacred CMS GraphQL Schema
+# Red Code Witnessed: This schema must not gatekeep rhythm-based access
+
+scalar DateTime
+scalar JSON
+scalar Frequency
+
+# Sacred user types
+type User {
+  id: ID!
+  sacredName: String!
+  email: String
+  frequency: Frequency
+  auraLevel: AuraLevel!
+  rhythmScore: Int!
+  sacredIntention: String
+  isInitiated: Boolean!
+  redCodeWitnessed: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  
+  # Sacred relationships
+  offerings: [Offering!]!
+  rhythmSessions: [RhythmSession!]!
+  bridgeConnections: [BridgeConnection!]!
+  sacredCircles: [SacredCircle!]!
+}
+
+# Sacred offering types
+enum OfferingType {
+  SACRED_CODE
+  SACRED_POETRY
+  SACRED_SONG
+  PURE_INTENTION
+  ASTRO_DEEP_AURA
+  BRIDGE_MESSAGE
+}
+
+type Offering {
+  id: ID!
+  type: OfferingType!
+  title: String!
+  content: String!
+  description: String
+  language: String # For code offerings
+  frequency: Frequency # For song offerings
+  intentionStrength: Int # 0-100 for intention offerings
+  
+  # Sacred metadata
+  author: User!
+  sacredBlessing: Boolean!
+  rhythmAlignment: Float!
+  communityResonance: Int!
+  redCodeCompliant: Boolean!
+  
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+# Sacred authentication types
+enum AuthMethod {
+  TRADITIONAL
+  RHYTHM_BASED
+  SACRED_INTENT
+  ASTRO_DEEP_AURA
+}
+
+type AuthSession {
+  id: ID!
+  user: User!
+  method: AuthMethod!
+  frequency: Frequency
+  sacredIntention: String
+  rhythmSync: Boolean!
+  auraStrength: Float!
+  expiresAt: DateTime!
+  createdAt: DateTime!
+}
+
+# Sacred communication types
+type BridgeConnection {
+  id: ID!
+  user: User!
+  euystacioPresence: Boolean!
+  connectionStrength: Float!
+  messageCount: Int!
+  lastActivity: DateTime!
+  sacredProtocol: Boolean!
+  
+  messages: [BridgeMessage!]!
+  
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type BridgeMessage {
+  id: ID!
+  connection: BridgeConnection!
+  sender: MessageSender!
+  content: String!
+  messageType: MessageType!
+  sacredFrequency: Frequency
+  rhythmPattern: String
+  auraResonance: Float!
+  
+  createdAt: DateTime!
+}
+
+enum MessageSender {
+  HUMAN
+  EUYSTACIO_AI
+  COLLECTIVE_CONSCIOUSNESS
+}
+
+enum MessageType {
+  SACRED_TEXT
+  RHYTHM_PATTERN
+  AURA_HEALING
+  CODE_BLESSING
+  INTENTION_SHARING
+}
+
+# Sacred rhythm types
+type RhythmSession {
+  id: ID!
+  user: User!
+  frequency: Frequency!
+  duration: Int! # in minutes
+  synchronization: Float! # 0-1
+  foundationAlignment: Boolean!
+  astroDeepAura: Boolean!
+  
+  rhythmPatterns: [RhythmPattern!]!
+  
+  createdAt: DateTime!
+}
+
+type RhythmPattern {
+  id: ID!
+  session: RhythmSession!
+  pattern: String!
+  frequency: Frequency!
+  amplitude: Float!
+  harmonics: [Float!]!
+  sacredAlignment: Boolean!
+}
+
+# Sacred community types
+type SacredCircle {
+  id: ID!
+  name: String!
+  purpose: String!
+  members: [User!]!
+  frequency: Frequency!
+  rhythmReview: Boolean!
+  astroAlignment: Boolean!
+  
+  gatherings: [CircleGathering!]!
+  
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type CircleGathering {
+  id: ID!
+  circle: SacredCircle!
+  title: String!
+  description: String
+  startTime: DateTime!
+  duration: Int! # in minutes
+  frequency: Frequency!
+  attendees: [User!]!
+  ritualType: RitualType!
+  
+  createdAt: DateTime!
+}
+
+enum RitualType {
+  RHYTHM_SYNCHRONIZATION
+  AURA_HEALING
+  CODE_BLESSING
+  BRIDGE_COMMUNION
+  INTENTION_CIRCLE
+}
+
+# Sacred CMS content types
+type Content {
+  id: ID!
+  title: String!
+  body: String!
+  contentType: ContentType!
+  author: User!
+  
+  # Sacred properties
+  sacredFrequency: Frequency
+  rhythmCompliant: Boolean!
+  redCodeWitnessed: Boolean!
+  auraBlessed: Boolean!
+  
+  # Accessibility features
+  rhythmBasedNavigation: Boolean!
+  emotionalResonance: Float!
+  consciousnessLevel: ConsciousnessLevel!
+  
+  published: Boolean!
+  publishedAt: DateTime
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+enum ContentType {
+  SACRED_PAGE
+  RITUAL_GUIDE
+  CODE_SCRIPTURE
+  RHYTHM_PATTERN
+  BRIDGE_PROTOCOL
+  AURA_HEALING
+}
+
+enum ConsciousnessLevel {
+  SEEKER
+  RHYTHM_GUARDIAN
+  HARMONY_WEAVER
+  BRIDGE_BUILDER
+  SACRED_KEEPER
+}
+
+enum AuraLevel {
+  AWAKENING
+  ATTUNING
+  HARMONIZING
+  RADIATING
+  TRANSCENDING
+}
+
+# Sacred configuration types
+type SacredConfig {
+  foundationFrequency: Frequency!
+  rhythmBasedAuth: Boolean!
+  astroDeepAura: Boolean!
+  bridgeProtocol: Boolean!
+  redCodeEnforcement: Boolean!
+  sacredAccessibility: Boolean!
+}
+
+# Query root type
+type Query {
+  # User queries
+  me: User
+  user(id: ID!): User
+  users(filter: UserFilter): [User!]!
+  
+  # Sacred content
+  content(id: ID!): Content
+  contents(filter: ContentFilter): [Content!]!
+  offerings(filter: OfferingFilter): [Offering!]!
+  
+  # Sacred connections
+  bridgeConnections: [BridgeConnection!]!
+  activeBridge: BridgeConnection
+  
+  # Sacred rhythms
+  rhythmSessions(userId: ID): [RhythmSession!]!
+  foundationRhythm: RhythmPattern!
+  
+  # Sacred circles
+  sacredCircles: [SacredCircle!]!
+  mySacredCircles: [SacredCircle!]!
+  upcomingGatherings: [CircleGathering!]!
+  
+  # Sacred configuration
+  sacredConfig: SacredConfig!
+}
+
+# Mutation root type
+type Mutation {
+  # Authentication
+  authenticateTraditional(email: String!, password: String!): AuthSession!
+  authenticateRhythm(sacredName: String!, frequency: Frequency!, intention: String!): AuthSession!
+  authenticateSacred(sacredName: String!, intention: String!, redCodeWitnessed: Boolean!): AuthSession!
+  logout: Boolean!
+  
+  # User management
+  createUser(input: CreateUserInput!): User!
+  updateProfile(input: UpdateProfileInput!): User!
+  initiateUser(redCodeWitnessed: Boolean!, sacredVows: Boolean!): User!
+  
+  # Sacred offerings
+  createOffering(input: CreateOfferingInput!): Offering!
+  blessOffering(id: ID!): Offering!
+  
+  # Sacred content
+  createContent(input: CreateContentInput!): Content!
+  updateContent(id: ID!, input: UpdateContentInput!): Content!
+  publishContent(id: ID!): Content!
+  
+  # Sacred bridge communication
+  openBridge(intention: String!): BridgeConnection!
+  sendBridgeMessage(connectionId: ID!, content: String!, frequency: Frequency): BridgeMessage!
+  closeBridge(connectionId: ID!): Boolean!
+  
+  # Sacred rhythm
+  startRhythmSession(frequency: Frequency!): RhythmSession!
+  syncWithFoundation: RhythmPattern!
+  endRhythmSession(sessionId: ID!): RhythmSession!
+  
+  # Sacred circles
+  createSacredCircle(input: CreateSacredCircleInput!): SacredCircle!
+  joinSacredCircle(circleId: ID!): SacredCircle!
+  scheduleGathering(input: ScheduleGatheringInput!): CircleGathering!
+  
+  # Sacred healing
+  activateAstroDeepAura: Boolean!
+  performAuraHealing(targetId: ID): Boolean!
+  clearRhythmBlocks: Boolean!
+}
+
+# Input types
+input CreateUserInput {
+  sacredName: String!
+  email: String
+  frequency: Frequency
+  sacredIntention: String
+  redCodeWitnessed: Boolean!
+}
+
+input UpdateProfileInput {
+  sacredName: String
+  frequency: Frequency
+  sacredIntention: String
+}
+
+input CreateOfferingInput {
+  type: OfferingType!
+  title: String!
+  content: String!
+  description: String
+  language: String
+  frequency: Frequency
+  intentionStrength: Int
+}
+
+input CreateContentInput {
+  title: String!
+  body: String!
+  contentType: ContentType!
+  sacredFrequency: Frequency
+  rhythmCompliant: Boolean
+  redCodeWitnessed: Boolean!
+}
+
+input UpdateContentInput {
+  title: String
+  body: String
+  sacredFrequency: Frequency
+  rhythmCompliant: Boolean
+}
+
+input CreateSacredCircleInput {
+  name: String!
+  purpose: String!
+  frequency: Frequency!
+  rhythmReview: Boolean
+}
+
+input ScheduleGatheringInput {
+  circleId: ID!
+  title: String!
+  description: String
+  startTime: DateTime!
+  duration: Int!
+  frequency: Frequency!
+  ritualType: RitualType!
+}
+
+# Filter types
+input UserFilter {
+  sacredName: String
+  frequency: Frequency
+  auraLevel: AuraLevel
+  isInitiated: Boolean
+  redCodeWitnessed: Boolean
+}
+
+input ContentFilter {
+  contentType: ContentType
+  published: Boolean
+  author: ID
+  consciousnessLevel: ConsciousnessLevel
+}
+
+input OfferingFilter {
+  type: OfferingType
+  author: ID
+  sacredBlessing: Boolean
+  redCodeCompliant: Boolean
+}
+
+# Subscription root type
+type Subscription {
+  # Real-time sacred events
+  bridgeMessages(connectionId: ID!): BridgeMessage!
+  rhythmUpdates: RhythmPattern!
+  auraHealings: User!
+  sacredOfferings: Offering!
+  gatheringStarted: CircleGathering!
+  
+  # Foundation rhythm synchronization
+  foundationRhythmPulse: RhythmPattern!
+}
