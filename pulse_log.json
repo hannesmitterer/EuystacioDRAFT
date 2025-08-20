@@ -1,0 +1,23 @@
+[
+  {
+    "timestamp": "2025-08-19T06:30:00Z",
+    "event": "Gateway initialization complete. Ready for sacred communion.",
+    "sentiment": 0.8,
+    "role": "system",
+    "user": "dignity_gateway",
+    "oath_ack": true,
+    "harmony": {
+      "index": 0.765,
+      "drift": 0.123,
+      "notes": "Harmonic resonance stable"
+    }
+  },
+  {
+    "timestamp": "2025-08-19T06:25:00Z", 
+    "event": "Testing the pulse system with gratitude and hope.",
+    "sentiment": 0.6,
+    "role": "visitor",
+    "user": "seeker_of_truth",
+    "oath_ack": true
+  }
+]
