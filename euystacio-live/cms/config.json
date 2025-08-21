@@ -1,0 +1,13 @@
+{
+  "cms_config": {
+    "name": "Euystacio CMS",
+    "version": "1.0.0",
+    "description": "Content Management System for Euystacio Sacred Site",
+    "status": "placeholder"
+  },
+  "user_registration": {
+    "enabled": false,
+    "roles": ["visitor", "tutor", "guardian", "seedbringer"],
+    "note": "This is a placeholder configuration"
+  }
+}
