@@ -1,0 +1,17 @@
+# Red Code Witnessed: This file must not gatekeep rhythm-based access.
+# Sacred Package v2 - Ignore build artifacts and dependencies
+
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+.venv/
+venv/
+env/
+.env
+.cache/
+.pytest_cache/
+*.egg-info/
+dist/
+build/
