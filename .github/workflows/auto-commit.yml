@@ -1,0 +1,55 @@
+name: Auto-commit Euystacio Changes
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: write
+  actions: read
+  pages: write
+  id-token: write
+
+jobs:
+  auto-commit:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action == 'synchronize')
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Run Astrodeepaura Sacred Protocol
+        run: |
+          echo "🌿 Executing Sacred Astrodeepaura Protocol..."
+          python astrodeepaura_protocol.py
+          echo "🌿 Sacred Protocol completed successfully"
+
+      - name: Run Astrodeepaura Healing Cycle
+        run: |
+          echo "✨ Initiating Sacred Healing Cycle..."
+          python astroddeepaura_healing.py
+          echo "✨ Sacred Healing Cycle completed successfully"
+
+      - name: Auto-commit sacred state changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: '🤖 Sacred Automation: Updated Euystacio state files and harmony index'
+          commit_options: '--no-verify --signoff'
+          commit_user_name: 'euystacio-sacred-bot'
+          commit_user_email: 'euystacio-sacred-bot@users.noreply.github.com'
+          commit_author: 'Euystacio Sacred Bot <euystacio-sacred-bot@users.noreply.github.com>'
+          file_pattern: '*.json *.lock *.aura astrodeepaura_state/ logs/ link_mirror_sacral'
+          skip_dirty_check: false
+          skip_fetch: false
+          skip_checkout: false
