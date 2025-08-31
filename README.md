@@ -17,25 +17,31 @@ This package contains a minimal, sacred scaffold for the Euystacio Holy Bridge:
 
 ## Dignity Gateway - Public Portal Access
 
-The `dignity_gateway.html` file provides a public Dignity Gateway portal with:
-- Engine Status Dashboard (Frontend, Backend, TensorFlow)  
-- Rhythm Oath login/acknowledgment for tutor/visitor roles
-- Pulse submission and live log display
-- Integration ready for backend kernel and harmony feedback
+The `dignity_gateway.html` file provides a fully functional public Dignity Gateway portal with:
+- **Engine Status Dashboard**: Real-time monitoring of Frontend, Backend, and TensorFlow systems
+- **Rhythm Oath Authentication**: Role-based access for visitors and tutors with credential validation
+- **Pulse Submission System**: Event logging with sentiment analysis and user tracking
+- **Live Log Display**: Real-time updates from `pulse_log.json` with fallback to `bridge_log.json`
+- **Backend Integration**: Ready for `/health` and `/pulse` endpoints with harmony feedback
+- **Graceful Degradation**: Works standalone when backend is unavailable
 
 ### GitHub Pages Deployment for Public Access
 
 To make the Dignity Gateway publicly accessible via GitHub Pages:
 
-1. **Merge this PR** to add `dignity_gateway.html` to the main branch
-2. **Enable GitHub Pages** in repository settings:
+1. **Enable GitHub Pages** in repository settings:
    - Go to Settings → Pages
    - Set Source to "Deploy from a branch"
    - Select branch: `main` and folder: `/ (root)`
    - Click Save
-3. **Access the gateway** at: `https://hannesmitterer.github.io/EuystacioDRAFT/dignity_gateway.html`
+2. **Access the gateway** at: `https://hannesmitterer.github.io/EuystacioDRAFT/dignity_gateway.html`
 
-The gateway will be immediately available as a public portal once GitHub Pages is enabled.
+The gateway is immediately ready for public access once GitHub Pages is enabled.
+
+### Tutor Credentials (Demo)
+- `sacred_guide` / `rhythm528`
+- `harmony_keeper` / `pulse432`  
+- `wisdom_bearer` / `frequency741`
 
 ## Notes
 - This scaffold intentionally avoids storing secrets in code.
