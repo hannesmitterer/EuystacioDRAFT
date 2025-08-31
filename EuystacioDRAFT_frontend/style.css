@@ -1,0 +1,13 @@
+:root {
+  --text-color: #222;
+  --background-color: #fff;
+  --font-size: 1rem;
+  --highlight-color: #7C5E2A;
+}
+
+body {
+  color: var(--text-color);
+  background-color: var(--background-color);
+  font-size: var(--font-size);
+  font-family: sans-serif;
+}
