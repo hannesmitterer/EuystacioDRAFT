@@ -53,3 +53,9 @@ jobs:
           skip_dirty_check: false
           skip_fetch: false
           skip_checkout: false
+
+      - name: Trigger GitHub Pages deployment
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        run: |
+          echo "🌐 Sacred state updated on main branch - GitHub Pages will auto-deploy"
+          echo "📖 Dignity Gateway accessible at: https://hannesmitterer.github.io/EuystacioDRAFT/dignity_gateway.html"
