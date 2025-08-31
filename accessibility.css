@@ -1,0 +1,27 @@
+:root {
+  --text-color: #222;
+  --background-color: #fff;
+  --font-size: 1rem;
+}
+
+body {
+  color: var(--text-color);
+  background-color: var(--background-color);
+  font-size: var(--font-size);
+  line-height: 1.6;
+  font-family: Arial, sans-serif;
+}
+
+a {
+  color: #4A773C;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+header, nav, section, footer {
+  margin: 1rem;
+  padding: 0.5rem;
+}
