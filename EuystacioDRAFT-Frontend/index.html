@@ -23,11 +23,13 @@
 <main>
   <div id="login-register">
     <h2>Authentication</h2>
-    <div class="auth-form">
-      <input type="text" id="username" placeholder="Username">
-      <input type="password" id="password" placeholder="Password">
-      <button onclick="handleLogin()">Login</button>
-    </div>
+    <form class="auth-form" onsubmit="event.preventDefault(); handleLogin();">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" placeholder="Enter username" required>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" placeholder="Enter password" required>
+      <button type="submit">Login</button>
+    </form>
   </div>
   <div id="dashboard-3d"></div>
   <div id="hymn-section"></div>
