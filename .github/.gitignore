@@ -1,0 +1,12 @@
+# Temporary workflow test files
+*.tmp
+*.log
+test_output/
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
