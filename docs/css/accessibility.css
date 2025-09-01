@@ -1,0 +1,13 @@
+:root {
+  --text-color: #222;
+  --background-color: #fff;
+  --font-size: 1rem;
+}
+
+body {
+  color: var(--text-color);
+  background-color: var(--background-color);
+  font-size: var(--font-size);
+}
+
+a { outline: 2px solid #222; }
