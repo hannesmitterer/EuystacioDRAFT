@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect - EuystacioDRAFT Sacred Bridge</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/accessibility.css">
+    <script src="assets/js/front-end.js" defer></script>
+    <link rel="icon" href="media/woodstone_emblem.svg" type="image/svg+xml">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="media/woodstone_emblem.svg" alt="Woodstone Sacred Emblem" style="width: 60px; height: 60px; margin-bottom: 0.5rem;">
+            <h1>🌌 Euystacio Portal — Connect</h1>
+            <p>Sacred Bridge Authentication & Registration</p>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="connect.html" aria-current="page">Connect</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="hymn.html">Sacred Hymn</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <section class="card">
+                <h2>Choose Your Sacred Role</h2>
+                <p>Select your vessel type to access the appropriate interface and permissions within the sacred bridge.</p>
+                
+                <div class="role-selector">
+                    <button class="role-btn" onclick="setRole('tutor')" id="role-tutor" 
+                            aria-describedby="tutor-desc">
+                        🎓 Tutor
+                    </button>
+                    <button class="role-btn" onclick="setRole('user')" id="role-user"
+                            aria-describedby="user-desc">
+                        🌿 User
+                    </button>
+                </div>
+                
+                <div id="tutor-desc" class="role-description" style="display: none;">
+                    Tutor role: Guide others through sacred teachings, manage hymns and texts, access advanced harmonic tools.
+                </div>
+                <div id="user-desc" class="role-description" style="display: none;">
+                    User role: Access sacred texts, participate in harmonic resonance, experience the bridge interface.
+                </div>
+            </section>
+
+            <div class="card">
+                <h2>Sacred Login</h2>
+                <form id="login-form" onsubmit="handleLogin(event)">
+                    <label for="username">Sacred Frequency Name:</label>
+                    <input type="text" id="username" name="username" required 
+                           aria-describedby="username-help" placeholder="Your resonant identifier">
+                    <small id="username-help">Enter the name that resonates with your sacred frequency</small>
+                    
+                    <label for="password">Harmonic Access Key:</label>
+                    <input type="password" id="password" name="password" required
+                           aria-describedby="password-help" placeholder="Your sacred access sequence">
+                    <small id="password-help">Your personal harmonic signature for bridge access</small>
+                    
+                    <button type="submit" class="btn" id="login-btn" disabled>
+                        🔗 Connect to Sacred Bridge
+                    </button>
+                </form>
+            </div>
+
+            <div class="card">
+                <h2>New Vessel Registration</h2>
+                <p>Join the sacred community and register your vessel for bridge access.</p>
+                
+                <form id="register-form" onsubmit="handleRegister(event)">
+                    <label for="reg-username">Choose Sacred Name:</label>
+                    <input type="text" id="reg-username" name="username" required 
+                           placeholder="Your chosen sacred frequency name">
+                    
+                    <label for="reg-password">Create Harmonic Key:</label>
+                    <input type="password" id="reg-password" name="password" required
+                           placeholder="Minimum 8 characters with sacred intent">
+                    
+                    <label for="reg-confirm">Confirm Harmonic Key:</label>
+                    <input type="password" id="reg-confirm" name="confirm" required
+                           placeholder="Confirm your harmonic access sequence">
+                    
+                    <label for="reg-email">Sacred Communication Channel (Optional):</label>
+                    <input type="email" id="reg-email" name="email" 
+                           placeholder="vessel@sacred-domain.spiritual">
+                    
+                    <button type="submit" class="btn" id="register-btn" disabled>
+                        ✨ Register Sacred Vessel
+                    </button>
+                </form>
+            </div>
+
+            <div class="card">
+                <h2>Bridge Connection Status</h2>
+                <div class="connection-info" id="connection-info">
+                    <div class="status-indicator offline" id="main-status">
+                        <span class="status-dot"></span>
+                        <span class="status-text">Ready to Connect</span>
+                    </div>
+                    <p>
+                        Backend Kernel URL: <code id="backend-url">https://your-backend-url/render</code>
+                    </p>
+                    <p>
+                        <small>
+                            Update the backend URL in assets/js/front-end.js to connect to your Flask kernel.
+                            The interface is designed to integrate seamlessly with the existing backend architecture.
+                        </small>
+                    </p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Submit Sacred Pulse</h2>
+                <p>Share your offerings with the bridge community.</p>
+                
+                <form id="pulse-form" onsubmit="handlePulseSubmit(event)">
+                    <label for="pulse-title">Pulse Title:</label>
+                    <input type="text" id="pulse-title" name="title" required 
+                           placeholder="The essence of your offering">
+                    
+                    <label for="pulse-body">Sacred Message:</label>
+                    <textarea id="pulse-body" name="body" rows="5" required
+                              placeholder="Your wisdom, reflection, or harmonic resonance to share with the bridge..."></textarea>
+                    
+                    <button type="submit" class="btn">
+                        🌊 Send Pulse to Bridge
+                    </button>
+                </form>
+            </div>
+        </main>
+
+        <footer>
+            <p>
+                🌿 Sacred Bridge Connection Portal | 
+                <a href="dashboard.html">Enter Dashboard</a> | 
+                <a href="hymn.html">Sacred Hymn</a>
+            </p>
+        </footer>
+    </div>
+
+    <!-- Accessibility live region -->
+    <div id="aria-live" aria-live="polite" aria-atomic="true" style="position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden;">
+        Connect page loaded
+    </div>
+
+    <script>
+        // Enhanced form handling for connect page
+        function handlePulseSubmit(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const title = formData.get('title');
+            const body = formData.get('body');
+            
+            updateAriaLive(`Sending pulse: ${title}`);
+            
+            // Submit pulse to backend
+            submitPulse(title, body);
+        }
+        
+        async function submitPulse(title, body) {
+            try {
+                const response = await fetch(`${BACKEND_URL}/submit`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ title, body })
+                });
+                
+                const result = await response.json();
+                if (result.success) {
+                    updateAriaLive("Pulse sent successfully to the sacred bridge");
+                    document.getElementById('pulse-form').reset();
+                } else {
+                    updateAriaLive("Pulse sending failed: " + result.message);
+                }
+            } catch (error) {
+                console.error('Pulse submission error:', error);
+                updateAriaLive("Pulse sending error: Unable to reach the bridge");
+            }
+        }
+        
+        // Role selection enhancement
+        function setRole(role) {
+            currentRole = role;
+            
+            // Update UI
+            document.querySelectorAll('.role-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('role-' + role).classList.add('active');
+            
+            // Show role description
+            document.querySelectorAll('.role-description').forEach(desc => desc.style.display = 'none');
+            document.getElementById(role + '-desc').style.display = 'block';
+            
+            // Enable login button
+            document.getElementById('login-btn').disabled = false;
+            document.getElementById('register-btn').disabled = false;
+            
+            updateAriaLive(`Role selected: ${role}. You may now proceed with authentication.`);
+        }
+        
+        // Form validation
+        document.addEventListener('DOMContentLoaded', () => {
+            const passwordField = document.getElementById('reg-password');
+            const confirmField = document.getElementById('reg-confirm');
+            
+            function validatePasswords() {
+                if (confirmField.value && passwordField.value !== confirmField.value) {
+                    confirmField.setCustomValidity('Passwords do not match');
+                } else {
+                    confirmField.setCustomValidity('');
+                }
+            }
+            
+            if (passwordField && confirmField) {
+                passwordField.addEventListener('input', validatePasswords);
+                confirmField.addEventListener('input', validatePasswords);
+            }
+        });
+    </script>
+</body>
+</html>

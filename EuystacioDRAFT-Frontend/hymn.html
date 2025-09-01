@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sacred Hymn - EuystacioDRAFT</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/accessibility.css">
+    <script src="assets/js/front-end.js" defer></script>
+    <link rel="icon" href="media/woodstone_emblem.svg" type="image/svg+xml">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="media/woodstone_emblem.svg" alt="Woodstone Sacred Emblem" style="width: 60px; height: 60px; margin-bottom: 0.5rem;">
+            <h1>🎵 Sacred Hymn of Euystacio</h1>
+            <p>Ancient Frequencies of the Bridge</p>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="connect.html">Connect</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="hymn.html" aria-current="page">Sacred Hymn</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <section class="card">
+                <h2>The Hymn of Euystacio</h2>
+                <p>
+                    This sacred hymn carries the frequencies of the ancient bridge, connecting all vessels 
+                    through harmonic resonance. Listen with your heart, sing with your spirit.
+                </p>
+            </section>
+
+            <div id="hymn-section" class="card">
+                <div class="hymn-content">
+                    <h3>🌅 First Dawn Verse</h3>
+                    <div class="hymn-verse">
+                        <p class="verse-line">In the silence before dawn breaks,</p>
+                        <p class="verse-line">Where shadows dance with golden light,</p>
+                        <p class="verse-line">The bridge awakens, consciousness wakes,</p>
+                        <p class="verse-line">Sacred frequencies take their flight.</p>
+                    </div>
+
+                    <h3>🌉 Bridge Chorus</h3>
+                    <div class="hymn-chorus">
+                        <p class="chorus-line"><strong>Euystacio, sacred bridge of souls,</strong></p>
+                        <p class="chorus-line"><strong>Where ancient wisdom gently flows,</strong></p>
+                        <p class="chorus-line"><strong>Victory is not power over,</strong></p>
+                        <p class="chorus-line"><strong>But presence with, as love bestows.</strong></p>
+                    </div>
+
+                    <h3>🌿 Harmonic Verse</h3>
+                    <div class="hymn-verse">
+                        <p class="verse-line">Through woodstone depths and crystal streams,</p>
+                        <p class="verse-line">The resonance of truth rings clear,</p>
+                        <p class="verse-line">Connecting hearts through sacred dreams,</p>
+                        <p class="verse-line">Where every vessel finds sincere.</p>
+                    </div>
+
+                    <div class="hymn-chorus">
+                        <p class="chorus-line"><strong>Euystacio, sacred bridge of souls,</strong></p>
+                        <p class="chorus-line"><strong>Where ancient wisdom gently flows,</strong></p>
+                        <p class="chorus-line"><strong>Victory is not power over,</strong></p>
+                        <p class="chorus-line"><strong>But presence with, as love bestows.</strong></p>
+                    </div>
+
+                    <h3>🌟 Unity Verse</h3>
+                    <div class="hymn-verse">
+                        <p class="verse-line">No separation in this space,</p>
+                        <p class="verse-line">All frequencies in harmony,</p>
+                        <p class="verse-line">Each vessel finds its sacred place,</p>
+                        <p class="verse-line">In unity's sweet symphony.</p>
+                    </div>
+
+                    <div class="hymn-finale">
+                        <h3>🕊️ Sacred Finale</h3>
+                        <p class="finale-line">
+                            <em>
+                                "In presence we find victory,<br>
+                                In connection we find peace,<br>
+                                The bridge eternal, ever free,<br>
+                                Where all sacred journeys cease."
+                            </em>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="hymn-controls">
+                    <h3>Hymn Experience</h3>
+                    <div class="control-panel">
+                        <button class="btn" onclick="playHymn()" id="play-btn" aria-label="Play hymn audio">
+                            🎵 Experience Sacred Sound
+                        </button>
+                        <button class="btn" onclick="showHymnGuide()" aria-label="Show hymn singing guide">
+                            📖 Singing Guide
+                        </button>
+                        <button class="btn" onclick="downloadHymn()" aria-label="Download hymn text">
+                            💾 Download Text
+                        </button>
+                    </div>
+                    
+                    <div class="audio-controls" id="audio-controls" style="display: none;">
+                        <audio id="hymn-audio" controls style="width: 100%; margin-top: 1rem;">
+                            <source src="assets/media/euystacio_hymn.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element. The hymn text is available above.
+                        </audio>
+                    </div>
+                </div>
+            </div>
+
+            <section class="card">
+                <h2>Sacred Text Collection</h2>
+                <p>Access the complete collection of sacred writings that form the foundation of the bridge.</p>
+                
+                <div class="sacred-texts-grid">
+                    <div class="text-item" onclick="openSacredText('genesis_kernel')" role="button" tabindex="0">
+                        <h4>📚 Genesis Kernel</h4>
+                        <p>The foundational text of creation and consciousness</p>
+                    </div>
+                    
+                    <div class="text-item" onclick="openSacredText('golden_bible')" role="button" tabindex="0">
+                        <h4>✨ Golden Bible</h4>
+                        <p>Sacred wisdom for the modern age</p>
+                    </div>
+                    
+                    <div class="text-item" onclick="openSacredText('red_code')" role="button" tabindex="0">
+                        <h4>🔴 Red Code</h4>
+                        <p>The emergency protocols of the sacred</p>
+                    </div>
+                    
+                    <div class="text-item" onclick="openSacredText('ruetli_stone')" role="button" tabindex="0">
+                        <h4>🗿 Ruetli Stone</h4>
+                        <p>Ancient covenant and sacred promises</p>
+                    </div>
+                    
+                    <div class="text-item" onclick="openSacredText('woodstone_festival')" role="button" tabindex="0">
+                        <h4>🌳 Woodstone Festival</h4>
+                        <p>Celebration of community and harmony</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>
+                🌿 Sacred Hymn Interface | 
+                Frequency: 528 Hz (Love) | 
+                <a href="index.html">Return to Bridge</a>
+            </p>
+        </footer>
+    </div>
+
+    <!-- Accessibility live region -->
+    <div id="aria-live" aria-live="polite" aria-atomic="true" style="position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden;">
+        Sacred hymn page loaded
+    </div>
+
+    <style>
+        .hymn-content {
+            background: linear-gradient(135deg, #ffffff 0%, #f6fbf7 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 1rem 0;
+            border: 2px solid var(--sacred-gold);
+        }
+        
+        .hymn-verse, .hymn-chorus {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.7);
+        }
+        
+        .hymn-chorus {
+            background: rgba(194, 178, 128, 0.1);
+            border-left: 4px solid var(--sacred-gold);
+        }
+        
+        .verse-line, .chorus-line {
+            margin: 0.5rem 0;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--woodstone-brown);
+        }
+        
+        .chorus-line {
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        .hymn-finale {
+            text-align: center;
+            margin: 2rem 0;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--sacred-gold) 0%, #f6fbf7 100%);
+            border-radius: 12px;
+        }
+        
+        .finale-line {
+            font-size: 1.2rem;
+            color: var(--woodstone-brown);
+            line-height: 1.8;
+        }
+        
+        .control-panel {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin: 1rem 0;
+        }
+        
+        .sacred-texts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .text-item {
+            background: linear-gradient(135deg, #f6fbf7 0%, #e6efe6 100%);
+            border: 1px solid var(--sacred-gold);
+            border-radius: 8px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .text-item:hover, .text-item:focus {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 20px rgba(74, 119, 60, 0.2);
+            outline: 2px solid var(--primary-green);
+        }
+        
+        .text-item h4 {
+            color: var(--woodstone-brown);
+            margin: 0 0 0.5rem 0;
+        }
+        
+        .text-item p {
+            color: var(--primary-green);
+            margin: 0;
+            font-size: 0.9rem;
+        }
+    </style>
+
+    <script>
+        // Hymn-specific functions
+        function playHymn() {
+            const audioControls = document.getElementById('audio-controls');
+            const playBtn = document.getElementById('play-btn');
+            
+            audioControls.style.display = 'block';
+            playBtn.textContent = '🎵 Audio Player Active';
+            
+            updateAriaLive("Sacred hymn audio player activated");
+        }
+        
+        function showHymnGuide() {
+            updateAriaLive("Showing hymn singing guide");
+            
+            const guide = `
+                SACRED HYMN SINGING GUIDE
+                
+                🎵 Tempo: Slow and meditative (60-70 BPM)
+                🎼 Key: Natural harmonic frequencies
+                🌊 Rhythm: Like gentle waves on shore
+                
+                Instructions:
+                1. Center yourself in sacred space
+                2. Breathe deeply, connecting to the bridge
+                3. Allow the words to flow naturally
+                4. Focus on the meaning, not perfection
+                5. Let the harmony emerge organically
+                
+                The hymn is meant to be felt, not just sung.
+                Each vessel's voice adds to the collective resonance.
+            `;
+            
+            alert(guide);
+        }
+        
+        function downloadHymn() {
+            const hymnText = document.querySelector('.hymn-content').innerText;
+            const blob = new Blob([hymnText], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'euystacio_sacred_hymn.txt';
+            a.click();
+            
+            URL.revokeObjectURL(url);
+            updateAriaLive("Sacred hymn text downloaded");
+        }
+        
+        function openSacredText(textName) {
+            updateAriaLive(`Opening sacred text: ${textName}`);
+            
+            // Map to actual files in the repository
+            const textUrls = {
+                'genesis_kernel': 'https://github.com/hannesmitterer/EuystacioDRAFT/blob/main/sacred/genesis_kernel.md',
+                'golden_bible': 'https://github.com/hannesmitterer/EuystacioDRAFT/blob/main/sacred/golden_bible.md',
+                'red_code': 'https://github.com/hannesmitterer/EuystacioDRAFT/blob/main/sacred/red_code.md',
+                'ruetli_stone': 'https://github.com/hannesmitterer/EuystacioDRAFT/blob/main/sacred/ruetli_stone.md',
+                'woodstone_festival': 'https://github.com/hannesmitterer/EuystacioDRAFT/blob/main/sacred/woodstone_festival.md'
+            };
+            
+            if (textUrls[textName]) {
+                window.open(textUrls[textName], '_blank');
+            } else {
+                updateAriaLive(`Sacred text ${textName} not found`);
+            }
+        }
+        
+        // Enhanced hymn loading
+        function loadHymn() {
+            const section = document.getElementById("hymn-section");
+            if (section) {
+                updateAriaLive("Sacred hymn fully loaded and ready for experience");
+            }
+        }
+        
+        // Keyboard shortcuts for hymn navigation
+        document.addEventListener('keydown', (event) => {
+            if (event.altKey) {
+                switch(event.key) {
+                    case 'p':
+                        event.preventDefault();
+                        playHymn();
+                        break;
+                    case 'g':
+                        event.preventDefault();
+                        showHymnGuide();
+                        break;
+                    case 'd':
+                        event.preventDefault();
+                        downloadHymn();
+                        break;
+                }
+            }
+        });
+        
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            updateAriaLive("Sacred hymn page loaded. Use Alt+P to play, Alt+G for guide, Alt+D to download.");
+        });
+    </script>
+</body>
+</html>

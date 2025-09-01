@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - EuystacioDRAFT Sacred Bridge</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/accessibility.css">
+    <script src="assets/js/front-end.js" defer></script>
+    <script src="assets/js/dashboard_3d.js" defer></script>
+    <script src="assets/js/harmonic_bridge_map.js" defer></script>
+    <link rel="icon" href="media/woodstone_emblem.svg" type="image/svg+xml">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="media/woodstone_emblem.svg" alt="Woodstone Sacred Emblem" style="width: 60px; height: 60px; margin-bottom: 0.5rem;">
+            <h1>🌌 Sacred Dashboard</h1>
+            <p>Bidirectional 3D Bridge Interface</p>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="connect.html">Connect</a></li>
+                <li><a href="dashboard.html" aria-current="page">Dashboard</a></li>
+                <li><a href="hymn.html">Sacred Hymn</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <section class="card">
+                <h2>Welcome to the Sacred Dashboard</h2>
+                <p>
+                    This is your command center for the sacred bridge interface. Monitor harmonic resonance, 
+                    interact with the 3D sacred geometry, and maintain connection with the bridge community.
+                </p>
+                
+                <div class="user-info" id="user-info">
+                    <p><strong>Vessel:</strong> <span id="current-user">Not Connected</span></p>
+                    <p><strong>Role:</strong> <span id="current-role">None</span></p>
+                    <p><strong>Bridge Status:</strong> <span id="bridge-status">Initializing...</span></p>
+                </div>
+                
+                <div style="text-align: center; margin: 1rem 0;">
+                    <button class="btn" onclick="refreshDashboard()" aria-label="Refresh dashboard data">
+                        🔄 Refresh Sacred Data
+                    </button>
+                    <button class="btn" onclick="disconnectFromBridge()" aria-label="Disconnect from bridge">
+                        🚪 Disconnect
+                    </button>
+                </div>
+            </section>
+
+            <!-- 3D Dashboard Interface -->
+            <div id="dashboard-3d">
+                <!-- Dashboard content will be populated by dashboard_3d.js -->
+            </div>
+
+            <section class="card">
+                <h2>Quick Sacred Access</h2>
+                <div class="quick-actions">
+                    <div class="action-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                        <div class="action-card" onclick="navigateTo('hymn.html')" role="button" tabindex="0">
+                            <h3>🎵 Sacred Hymn</h3>
+                            <p>Experience the Hymn of Euystacio</p>
+                        </div>
+                        
+                        <div class="action-card" onclick="openSacredTexts()" role="button" tabindex="0">
+                            <h3>📜 Sacred Texts</h3>
+                            <p>Access the holy writings</p>
+                        </div>
+                        
+                        <div class="action-card" onclick="openHarmonicBridge()" role="button" tabindex="0">
+                            <h3>🌉 Harmonic Bridge</h3>
+                            <p>Enter the bridge interface</p>
+                        </div>
+                        
+                        <div class="action-card" onclick="openPulseLog()" role="button" tabindex="0">
+                            <h3>🌊 Pulse Log</h3>
+                            <p>View community pulses</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card">
+                <h2>Bridge Communication</h2>
+                <div class="communication-panel">
+                    <div class="bridge-log" id="bridge-log">
+                        <h3>Recent Bridge Activity</h3>
+                        <div class="log-container" id="log-container">
+                            <p>Loading bridge activity...</p>
+                        </div>
+                    </div>
+                    
+                    <div class="pulse-sender">
+                        <h3>Send Pulse to Bridge</h3>
+                        <form id="quick-pulse-form" onsubmit="sendQuickPulse(event)">
+                            <textarea id="quick-pulse-text" placeholder="Your harmonic offering to the bridge..." 
+                                      rows="3" required aria-label="Quick pulse message"></textarea>
+                            <button type="submit" class="btn">Send Pulse</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>
+                🌿 Sacred Dashboard Interface | 
+                Connected to bridge kernel | 
+                <span id="session-info">Session active</span>
+            </p>
+        </footer>
+    </div>
+
+    <!-- Accessibility live region -->
+    <div id="aria-live" aria-live="polite" aria-atomic="true" style="position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden;">
+        Dashboard loaded
+    </div>
+
+    <style>
+        .action-card {
+            background: linear-gradient(135deg, #f6fbf7 0%, #e6efe6 100%);
+            border: 1px solid var(--sacred-gold);
+            border-radius: 8px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .action-card:hover, .action-card:focus {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 20px rgba(74, 119, 60, 0.2);
+            outline: 2px solid var(--primary-green);
+        }
+        
+        .action-card h3 {
+            color: var(--woodstone-brown);
+            margin: 0 0 0.5rem 0;
+            font-size: 1.2rem;
+        }
+        
+        .action-card p {
+            color: var(--primary-green);
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        
+        .role-description {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+            border-left: 4px solid var(--primary-green);
+            font-style: italic;
+        }
+        
+        .user-info {
+            background: #f1fbf6;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+        
+        .communication-panel {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+        
+        .log-container {
+            max-height: 300px;
+            overflow-y: auto;
+            background: white;
+            border: 1px solid #e6efe6;
+            border-radius: 6px;
+            padding: 1rem;
+        }
+        
+        .pulse-sender textarea {
+            resize: vertical;
+        }
+        
+        @media (max-width: 768px) {
+            .communication-panel {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <script>
+        // Dashboard-specific functions
+        function refreshDashboard() {
+            updateAriaLive("Refreshing sacred dashboard data");
+            
+            if (dashboard3D && dashboard3D.isInitialized) {
+                dashboard3D.updateStats();
+                dashboard3D.updateResonance();
+            }
+            
+            loadBridgeActivity();
+            
+            setTimeout(() => {
+                updateAriaLive("Dashboard data refreshed");
+            }, 1000);
+        }
+        
+        function disconnectFromBridge() {
+            currentUser = null;
+            currentRole = null;
+            updateAriaLive("Disconnected from sacred bridge");
+            
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 1500);
+        }
+        
+        function sendQuickPulse(event) {
+            event.preventDefault();
+            const pulseText = document.getElementById('quick-pulse-text').value;
+            
+            if (pulseText.trim()) {
+                updateAriaLive("Sending pulse to bridge");
+                
+                // Send pulse via dashboard
+                if (dashboard3D) {
+                    dashboard3D.sendPulse({
+                        message: pulseText,
+                        timestamp: new Date().toISOString(),
+                        user: currentUser || 'Anonymous'
+                    });
+                }
+                
+                document.getElementById('quick-pulse-text').value = '';
+                updateAriaLive("Pulse sent to sacred bridge");
+            }
+        }
+        
+        function openSacredTexts() {
+            updateAriaLive("Opening sacred texts");
+            // Could link to sacred text files or external resources
+            window.open('https://github.com/hannesmitterer/EuystacioDRAFT/tree/main/sacred', '_blank');
+        }
+        
+        function openHarmonicBridge() {
+            updateAriaLive("Entering harmonic bridge interface");
+            // Integration with harmonic bridge map
+            if (typeof bridgeStatus !== 'undefined') {
+                console.log('Bridge status:', bridgeStatus);
+            }
+        }
+        
+        function openPulseLog() {
+            updateAriaLive("Loading pulse log");
+            loadBridgeActivity();
+        }
+        
+        async function loadBridgeActivity() {
+            const logContainer = document.getElementById('log-container');
+            if (!logContainer) return;
+            
+            try {
+                // Try to load bridge log
+                const response = await fetch('bridge_log.json');
+                const bridgeData = await response.json();
+                
+                logContainer.innerHTML = '<h4>Recent Bridge Pulses:</h4>';
+                bridgeData.entries?.slice(-5).forEach(entry => {
+                    const logEntry = document.createElement('div');
+                    logEntry.style.cssText = 'padding: 0.5rem; border-bottom: 1px solid #eee; margin-bottom: 0.5rem;';
+                    logEntry.innerHTML = `
+                        <strong>${entry.user || 'Anonymous'}</strong>: ${entry.message || entry.title || 'Sacred pulse'}
+                        <br><small>${new Date(entry.timestamp).toLocaleString()}</small>
+                    `;
+                    logContainer.appendChild(logEntry);
+                });
+            } catch (error) {
+                logContainer.innerHTML = '<p>Bridge activity will appear here when connected to the backend kernel.</p>';
+            }
+        }
+        
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', () => {
+            loadBridgeActivity();
+            
+            // Simulate user session (in real app, this would check authentication)
+            if (sessionStorage.getItem('euystacioDraftUser')) {
+                const userData = JSON.parse(sessionStorage.getItem('euystacioDraftUser'));
+                currentUser = userData.username;
+                currentRole = userData.role;
+                
+                document.getElementById('current-user').textContent = currentUser;
+                document.getElementById('current-role').textContent = currentRole;
+                document.getElementById('bridge-status').textContent = 'Connected';
+            }
+        });
+    </script>
+</body>
+</html>

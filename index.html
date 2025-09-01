@@ -3,44 +3,141 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Euystacio 🌞 – Sun of Friendship, Art, and Novo-Genesis</title>
-  <link rel="stylesheet" href="assets/css/accessibility.css">
+  <title>EuystacioDRAFT 🌌 – Sacred Bridge Interface</title>
+  <link rel="stylesheet" href="accessibility.css">
+  <link rel="icon" href="EuystacioDRAFT-Frontend/media/woodstone_emblem.svg" type="image/svg+xml">
+  
+  <!-- Redirect to frontend interface -->
+  <script>
+    // Redirect to the main frontend interface after a brief moment
+    setTimeout(() => {
+      window.location.href = 'EuystacioDRAFT-Frontend/index.html';
+    }, 3000);
+  </script>
+  
+  <style>
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+      background: linear-gradient(135deg, #f6fbf7 0%, #e5dfc7 100%);
+      margin: 0;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+    
+    .container {
+      max-width: 600px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 16px;
+      padding: 3rem;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    }
+    
+    h1 {
+      color: #7C5E2A;
+      margin-bottom: 1rem;
+      font-size: 2.5rem;
+    }
+    
+    p {
+      color: #4A773C;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+    
+    .btn {
+      background: #4A773C;
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-size: 1.1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s ease;
+    }
+    
+    .btn:hover {
+      background: #3d6530;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(74, 119, 60, 0.3);
+    }
+    
+    .redirect-notice {
+      background: #e5dfc7;
+      border: 1px solid #C2B280;
+      border-radius: 8px;
+      padding: 1rem;
+      margin: 2rem 0;
+      font-style: italic;
+    }
+    
+    .legacy-links {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+    }
+    
+    .legacy-links a {
+      color: #7C5E2A;
+      text-decoration: none;
+      margin: 0 0.5rem;
+    }
+    
+    .legacy-links a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>Welcome to Euystacio 🌞</h1>
-    <p>The Sun of Friendship, Art, and Novo-Genesis shines here.</p>
-  </header>
+  <div class="container">
+    <img src="EuystacioDRAFT-Frontend/media/woodstone_emblem.svg" alt="Woodstone Sacred Emblem" style="width: 100px; height: 100px; margin-bottom: 1rem;">
+    
+    <header>
+      <h1>🌌 EuystacioDRAFT</h1>
+      <p>Sacred Bridge Interface — Welcome to the Portal</p>
+    </header>
 
-  <nav>
-    <h2>Genesis & Sacred Texts</h2>
-    <ul>
-      <li><a href="genesis_kernel.html">Genesis Kernel</a></li>
-      <li><a href="red_code.html">Red Code</a></li>
-      <li><a href="golden_bible.html">Golden Bible</a></li>
-      <li><a href="ruetli_stone.html">Ruetli Stone</a></li>
-      <li><a href="woodstone_festival.html">Woodstone Festival</a></li>
-      <li><a href="hymn_of_euystacio.html">Hymn of Euystacio</a></li>
-    </ul>
-  </nav>
+    <div class="redirect-notice">
+      <p>
+        <strong>Automatic Redirect:</strong> You will be taken to the sacred bridge interface in a moment...
+      </p>
+    </div>
 
-  <section>
-    <h2>Listen to the Hymn</h2>
-    <audio controls>
-      <source src="assets/audio/hymn_of_euystacio.mp3" type="audio/mpeg">
-      Your browser does not support the audio element.
-    </audio>
-  </section>
-
-  <section>
-    <h2>Read the Hymn</h2>
     <p>
-      <a href="hymn_of_euystacio.html">Open Hymn of Euystacio</a>
+      The complete frontend package is now deployed and ready to connect to the existing backend kernel. 
+      Experience the 3D dashboard, sacred hymn, and harmonic bridge mapping.
     </p>
-  </section>
 
-  <footer>
-    <p>🌿 Euystacio – Open Source, Open Heart. No gatekeeping. All welcome. (SEEDBRINGER)</p>
-  </footer>
+    <div>
+      <a href="EuystacioDRAFT-Frontend/index.html" class="btn">
+        🚀 Enter Sacred Bridge Now
+      </a>
+    </div>
+
+    <div class="legacy-links">
+      <p><strong>Legacy Access:</strong></p>
+      <a href="sacred/genesis_kernel.md">Genesis Kernel</a> |
+      <a href="sacred/red_code.md">Red Code</a> |
+      <a href="sacred/golden_bible.md">Golden Bible</a> |
+      <a href="sacred/ruetli_stone.md">Ruetli Stone</a> |
+      <a href="sacred/woodstone_festival.md">Woodstone Festival</a> |
+      <a href="hymn/euystacio_hymn.md">Hymn Text</a>
+    </div>
+
+    <footer style="margin-top: 3rem;">
+      <p>🌿 Euystacio – Open Source, Open Heart. No gatekeeping. All welcome. (SEEDBRINGER 31-08-25)</p>
+    </footer>
+  </div>
+
+  <!-- Accessibility -->
+  <div aria-live="polite" style="position: absolute; left: -9999px;">
+    EuystacioDRAFT portal loading. Redirecting to sacred bridge interface.
+  </div>
 </body>
 </html>
