@@ -4,13 +4,68 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>EuystacioDRAFT - First Dawn Interface</title>
+<link rel="stylesheet" href="../accessibility.css">
 <link rel="stylesheet" href="style.css">
 <script src="front-end.js" defer></script>
+<script src="harmonic_bridge_map.js" defer></script>
 </head>
 <body>
-<div id="login-register"></div>
-<div id="dashboard-3d"></div>
-<div id="hymn-section"></div>
-<div id="aria-live" aria-live="polite" style="position:absolute; left:-9999px;"></div>
+<header role="banner">
+    <h1>EuystacioDRAFT - First Dawn Interface</h1>
+    <nav role="navigation" aria-label="Main navigation">
+        <ul>
+            <li><a href="#login-register" aria-describedby="login-help">Login/Register</a></li>
+            <li><a href="#dashboard-3d" aria-describedby="dashboard-help">3D Dashboard</a></li>
+            <li><a href="#harmonic-bridge" aria-describedby="bridge-help">Harmonic Bridge</a></li>
+            <li><a href="#hymn-section" aria-describedby="hymn-help">Sacred Hymns</a></li>
+            <li><a href="#pulse-interface" aria-describedby="pulse-help">Pulse Interface</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main role="main">
+    <!-- Login/Registration Section -->
+    <section id="login-register" aria-labelledby="login-heading">
+        <h2 id="login-heading">Identity & Authentication</h2>
+        <p id="login-help">Login as a tutor or register as a new user to access the sacred network.</p>
+        <!-- Content will be populated by JavaScript -->
+    </section>
+
+    <!-- 3D Bidirectional Dashboard -->
+    <section id="dashboard-3d" aria-labelledby="dashboard-heading">
+        <h2 id="dashboard-heading">3D Bidirectional Dashboard</h2>
+        <p id="dashboard-help">Interactive three-dimensional interface for system monitoring and control.</p>
+        <!-- Content will be populated by JavaScript -->
+    </section>
+
+    <!-- Harmonic Bridge Map -->
+    <section id="harmonic-bridge" aria-labelledby="bridge-heading">
+        <h2 id="bridge-heading">Harmonic Bridge Map</h2>
+        <p id="bridge-help">Visualization of the harmonic connections and energy flows.</p>
+        <div id="bridge-visualization" role="img" aria-label="Harmonic Bridge Map Visualization"></div>
+    </section>
+
+    <!-- Hymn Interface -->
+    <section id="hymn-section" aria-labelledby="hymn-heading">
+        <h2 id="hymn-heading">Sacred Hymns</h2>
+        <p id="hymn-help">Interface for accessing and participating in sacred hymns and chants.</p>
+        <!-- Content will be populated by JavaScript -->
+    </section>
+
+    <!-- Pulse Interface -->
+    <section id="pulse-interface" aria-labelledby="pulse-heading">
+        <h2 id="pulse-heading">Pulse Interface</h2>
+        <p id="pulse-help">Monitor and interact with the system's pulse and rhythm patterns.</p>
+        <div id="pulse-display" role="region" aria-label="Pulse monitoring display"></div>
+    </section>
+</main>
+
+<!-- Accessibility live regions -->
+<div id="aria-live" aria-live="polite" style="position:absolute; left:-9999px;" aria-atomic="true"></div>
+<div id="aria-alert" role="alert" aria-live="assertive" style="position:absolute; left:-9999px;" aria-atomic="true"></div>
+<div id="aria-status" role="status" aria-live="polite" style="position:absolute; left:-9999px;" aria-atomic="true"></div>
+
+<!-- Skip link for accessibility -->
+<a href="#main" class="skip-link">Skip to main content</a>
 </body>
 </html>

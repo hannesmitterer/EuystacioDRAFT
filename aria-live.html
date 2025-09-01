@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EuystacioDRAFT - Live Updates Accessibility Demo</title>
+    <link rel="stylesheet" href="accessibility.css">
+    <style>
+        .live-region {
+            position: absolute;
+            left: -10000px;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+        }
+        
+        .demo-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
+        }
+        
+        .update-button {
+            background: #4A773C;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 0.5rem;
+            font-size: 1rem;
+        }
+        
+        .update-button:hover {
+            background: #3a5f30;
+        }
+        
+        .update-button:focus {
+            outline: 2px solid #4A773C;
+            outline-offset: 2px;
+        }
+        
+        .status-display {
+            border: 1px solid #ddd;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+            background: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1>EuystacioDRAFT Live Updates - Accessibility Demo</h1>
+        
+        <p>This page demonstrates WCAG 2.1 AA compliant live region updates for the EuystacioDRAFT interface.</p>
+        
+        <!-- ARIA live regions for different types of updates -->
+        <div id="aria-live-polite" class="live-region" aria-live="polite" aria-atomic="true"></div>
+        <div id="aria-live-assertive" class="live-region" aria-live="assertive" aria-atomic="true"></div>
+        <div id="aria-status" class="live-region" role="status" aria-live="polite"></div>
+        <div id="aria-alert" class="live-region" role="alert" aria-live="assertive"></div>
+        
+        <section>
+            <h2>Live Update Controls</h2>
+            <button class="update-button" onclick="updateStatus('polite')">
+                Update Status (Polite)
+            </button>
+            <button class="update-button" onclick="updateStatus('assertive')">
+                Update Alert (Assertive)
+            </button>
+            <button class="update-button" onclick="updatePulse()">
+                Update Pulse Status
+            </button>
+            <button class="update-button" onclick="updateHarmony()">
+                Update Harmony Bridge
+            </button>
+        </section>
+        
+        <section>
+            <h2>Current Status Display</h2>
+            <div id="status-display" class="status-display">
+                <p>Waiting for updates...</p>
+            </div>
+        </section>
+        
+        <section>
+            <h2>Accessibility Features</h2>
+            <ul>
+                <li>Screen reader compatible live regions</li>
+                <li>Keyboard navigation support</li>
+                <li>High contrast color scheme</li>
+                <li>Semantic HTML structure</li>
+                <li>Proper ARIA labels and roles</li>
+            </ul>
+        </section>
+    </div>
+
+    <script>
+        let updateCounter = 0;
+        
+        function updateStatus(type) {
+            updateCounter++;
+            const timestamp = new Date().toLocaleTimeString();
+            
+            if (type === 'polite') {
+                document.getElementById('aria-live-polite').textContent = 
+                    `Status update ${updateCounter} at ${timestamp}`;
+                document.getElementById('status-display').innerHTML = 
+                    `<p><strong>Polite Update:</strong> System status updated at ${timestamp}</p>`;
+            } else if (type === 'assertive') {
+                document.getElementById('aria-live-assertive').textContent = 
+                    `Important alert ${updateCounter} at ${timestamp}`;
+                document.getElementById('status-display').innerHTML = 
+                    `<p><strong>Alert:</strong> Critical system notification at ${timestamp}</p>`;
+            }
+        }
+        
+        function updatePulse() {
+            updateCounter++;
+            const timestamp = new Date().toLocaleTimeString();
+            const pulseData = {
+                bpm: Math.floor(Math.random() * 40) + 60,
+                harmony: (Math.random() * 2 - 1).toFixed(3),
+                resonance: Math.floor(Math.random() * 100)
+            };
+            
+            document.getElementById('aria-status').textContent = 
+                `Pulse update: ${pulseData.bpm} BPM, harmony ${pulseData.harmony}, resonance ${pulseData.resonance}%`;
+            document.getElementById('status-display').innerHTML = 
+                `<p><strong>Pulse Update:</strong> BPM: ${pulseData.bpm}, Harmony: ${pulseData.harmony}, Resonance: ${pulseData.resonance}% (${timestamp})</p>`;
+        }
+        
+        function updateHarmony() {
+            updateCounter++;
+            const timestamp = new Date().toLocaleTimeString();
+            const harmonyState = ['Ascending', 'Stable', 'Fluctuating', 'Harmonizing'][Math.floor(Math.random() * 4)];
+            
+            document.getElementById('aria-status').textContent = 
+                `Harmonic Bridge Map: State ${harmonyState}`;
+            document.getElementById('status-display').innerHTML = 
+                `<p><strong>Harmony Bridge:</strong> Current state: ${harmonyState} (${timestamp})</p>`;
+        }
+        
+        // Initialize with a welcome message
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                document.getElementById('aria-live-polite').textContent = 
+                    'EuystacioDRAFT accessibility interface initialized';
+                document.getElementById('status-display').innerHTML = 
+                    '<p><strong>System:</strong> Accessibility interface ready</p>';
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

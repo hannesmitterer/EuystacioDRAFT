@@ -198,6 +198,9 @@
   </div>
 
   <script>
+    // Backend URL configuration
+    const BACKEND_URL = "https://euystacio-ai-q3hh.onrender.com";
+    
     // Gateway state
     let currentRole = "visitor";
     let currentUser = "anonymous";
@@ -222,7 +225,7 @@
       
       // Check backend
       try {
-        const res = await fetch("/health", { cache: "no-store" });
+        const res = await fetch(`${BACKEND_URL}/health`, { cache: "no-store" });
         if (res.ok) {
           setBadge(document.getElementById("st_backend"), true, "Backend: connected", "Backend: error");
           
@@ -357,7 +360,7 @@
 
       // Try backend (if present)
       try {
-        const res = await fetch("/pulse", {
+        const res = await fetch(`${BACKEND_URL}/pulse`, {
           method: "POST",
           headers: { "Content-Type":"application/json" },
           body: JSON.stringify(entry)

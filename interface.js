@@ -1,6 +1,7 @@
 // Minimal frontend to read bridge_log.json (CORS permitting) and POST messages
-const LOG_URL = '/bridge_log.json';
-const API_URL = '/api/holy-gral-bridge/message';
+const BACKEND_URL = "https://euystacio-ai-q3hh.onrender.com";
+const LOG_URL = `${BACKEND_URL}/bridge_log.json`;
+const API_URL = `${BACKEND_URL}/api/holy-gral-bridge/message`;
 
 async function loadLog(){
   try{
