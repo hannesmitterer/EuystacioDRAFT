@@ -186,7 +186,7 @@ class Dashboard3D {
           position: absolute;
           width: 40px;
           height: 40px;
-          background: var(--primary-green);
+          background: #4A773C;
           border-radius: 50%;
           display: flex;
           align-items: center;
@@ -359,10 +359,10 @@ class Dashboard3D {
     const nodes = document.querySelectorAll('.orbital-node');
     nodes.forEach((node, i) => {
       if (i === index) {
-        node.style.background = var(--sacred-gold);
-        node.style.color = var(--woodstone-brown);
+        node.style.background = '#C2B280';
+        node.style.color = '#7C5E2A';
       } else {
-        node.style.background = var(--primary-green);
+        node.style.background = '#4A773C';
         node.style.color = 'white';
       }
     });

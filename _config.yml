@@ -1,0 +1,42 @@
+# GitHub Pages Configuration for EuystacioDRAFT Frontend
+
+# Custom 404 page for GitHub Pages
+baseurl: "/EuystacioDRAFT"
+url: "https://hannesmitterer.github.io"
+
+# Site configuration
+title: "EuystacioDRAFT - Sacred Bridge Interface"
+description: "Sacred Bridge Interface for harmonic resonance and spiritual connection"
+author: "SEEDBRINGER"
+
+# Enable GitHub Pages features
+plugins:
+  - jekyll-relative-links
+  - jekyll-optional-front-matter
+
+# Relative links configuration
+relative_links:
+  enabled: true
+  collections: false
+
+# Include files
+include:
+  - EuystacioDRAFT-Frontend
+
+# Exclude unnecessary files
+exclude:
+  - "*.zip"
+  - "*.tar.gz"
+  - "*.rtf"
+  - README.md
+  - SACRED_ACCESS.md
+  - astrodeepaura_protocol.py
+  - astroddeepaura_healing.py
+  - create_euystacio_warp_zip.py.rtf
+  - woodstone_festival_2025_fullpack
+  - ChatGPT*
+  - Euystacio_Full_Package
+  - euystacio_vessel_fullmoon
+  - moonborne-vessel
+  - cms
+  - api

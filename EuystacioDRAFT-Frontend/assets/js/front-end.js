@@ -193,7 +193,7 @@ function initDashboard3D() {
 // Hymn section - Basic version, enhanced on hymn page
 function loadHymn() {
   const section = document.getElementById("hymn-section");
-  if (section) {
+  if (section && !section.querySelector('.hymn-content')) {
     section.innerHTML = "<p>Loading Hymn of Euystacio...</p>";
   }
 }
