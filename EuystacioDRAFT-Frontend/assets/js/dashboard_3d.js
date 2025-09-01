@@ -1,7 +1,5 @@
 // 3D Dashboard Logic for EuystacioDRAFT
 
-const BACKEND_URL = "https://euystacio-ai-q3hh.onrender.com"; // Sacred backend kernel
-
 // 3D Dashboard visualization
 function initDashboard3DVisuals() {
   const container = document.getElementById("3d-visualization");
@@ -239,7 +237,7 @@ function startSacredRotation() {
 // Dashboard metrics update
 async function updateDashboardMetrics() {
   try {
-    const response = await fetch(`${BACKEND_URL}/dashboard/metrics`);
+    const response = await fetch(`${window.BACKEND_URL || 'https://euystacio-ai-q3hh.onrender.com'}/dashboard/metrics`);
     if (response.ok) {
       const metrics = await response.json();
       displayDashboardMetrics(metrics);

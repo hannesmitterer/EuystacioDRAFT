@@ -1,7 +1,5 @@
 // Harmonic Bridge Map: Living Blueprint for EuystacioDRAFT
 
-const BACKEND_URL = "https://euystacio-ai-q3hh.onrender.com"; // Sacred backend kernel
-
 const bridgeStatus = {
   isConsecrated: true,
   isLive: true,
@@ -182,7 +180,7 @@ function updateBridgeStatus(container) {
 
 async function checkBridgeHealth() {
   try {
-    const response = await fetch(`${BACKEND_URL}/bridge/health`);
+    const response = await fetch(`${window.BACKEND_URL || 'https://euystacio-ai-q3hh.onrender.com'}/bridge/health`);
     if (response.ok) {
       const health = await response.json();
       updateBridgeConnections(health);

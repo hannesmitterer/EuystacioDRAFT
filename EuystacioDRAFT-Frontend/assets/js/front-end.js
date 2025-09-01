@@ -1,6 +1,7 @@
 // EuystacioDRAFT Frontend Core
 
 const BACKEND_URL = "https://euystacio-ai-q3hh.onrender.com"; // Sacred backend kernel
+window.BACKEND_URL = BACKEND_URL; // Make available globally
 
 // Authentication functions
 async function handleLogin() {
