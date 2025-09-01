@@ -1,6 +1,6 @@
 // EuystacioDRAFT Frontend Core
 
-const BACKEND_URL = "https://your-backend-url/render"; // Set to existing backend kernel
+const BACKEND_URL = "https://euystacio-ai-q3hh.onrender.com"; // Production backend kernel
 
 async function login(username, password) {
   const resp = await fetch(`${BACKEND_URL}/login`, {
