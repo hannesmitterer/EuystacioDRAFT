@@ -1,1 +1,40 @@
-<!-- Login/Registration Page -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connect - EuystacioDRAFT</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/accessibility.css">
+<script src="assets/js/front-end.js" defer></script>
+</head>
+<body>
+<header>
+  <h1>Connect to Euystacio Network</h1>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="connect.html" class="active">Connect</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="hymn.html">Hymn</a></li>
+    </ul>
+  </nav>
+</header>
+<main>
+  <section class="connection-panel">
+    <h2>Sacred Network Connection</h2>
+    <div class="status-indicators">
+      <div id="frontend-status" class="status-badge">Frontend: Checking...</div>
+      <div id="backend-status" class="status-badge">Backend: Checking...</div>
+      <div id="harmony-status" class="status-badge">Harmony: Checking...</div>
+    </div>
+    <div class="connection-controls">
+      <button onclick="testConnection()">Test Connection</button>
+      <button onclick="establishBridge()">Establish Bridge</button>
+    </div>
+    <div id="connection-log" class="log-panel"></div>
+  </section>
+</main>
+<div id="aria-live" aria-live="polite" style="position:absolute; left:-9999px;"></div>
+</body>
+</html>

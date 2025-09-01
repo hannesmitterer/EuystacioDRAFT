@@ -1,1 +1,100 @@
-<div id='aria-live' aria-live='polite' style='position:absolute; left:-9999px;'></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accessibility - EuystacioDRAFT</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/accessibility.css">
+</head>
+<body>
+<header>
+  <h1>Accessibility Features</h1>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="connect.html">Connect</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="hymn.html">Hymn</a></li>
+    </ul>
+  </nav>
+</header>
+<main>
+  <section class="accessibility-info">
+    <h2>EuystacioDRAFT Accessibility</h2>
+    <p>This application includes comprehensive accessibility features:</p>
+    
+    <h3>Screen Reader Support</h3>
+    <ul>
+      <li>Semantic HTML structure with proper headings</li>
+      <li>ARIA live regions for dynamic content updates</li>
+      <li>Alternative text for all images and visual elements</li>
+      <li>Clear focus indicators for keyboard navigation</li>
+    </ul>
+    
+    <h3>Visual Accessibility</h3>
+    <ul>
+      <li>High contrast color scheme support</li>
+      <li>Scalable fonts and interface elements</li>
+      <li>Reduced motion support for vestibular sensitivity</li>
+      <li>Color-blind friendly color palette</li>
+    </ul>
+    
+    <h3>Motor Accessibility</h3>
+    <ul>
+      <li>Large touch targets (minimum 44px)</li>
+      <li>Keyboard navigation for all interactive elements</li>
+      <li>Extended timeout periods for form interactions</li>
+    </ul>
+    
+    <h3>Cognitive Accessibility</h3>
+    <ul>
+      <li>Clear, consistent navigation</li>
+      <li>Plain language throughout the interface</li>
+      <li>Predictable interaction patterns</li>
+      <li>Error messages with clear instructions</li>
+    </ul>
+  </section>
+  
+  <section class="live-demo">
+    <h2>Live Accessibility Demo</h2>
+    <div id="demo-aria-live" aria-live="polite" role="status" 
+         style="border: 2px solid var(--highlight-color); padding: 1rem; border-radius: var(--border-radius);">
+      <p>This is a live region that will announce updates to screen readers.</p>
+    </div>
+    <button onclick="demoAriaLive()">Test ARIA Live Announcement</button>
+  </section>
+</main>
+
+<script>
+function demoAriaLive() {
+  const liveRegion = document.getElementById("demo-aria-live");
+  const messages = [
+    "Sacred connection established.",
+    "Harmonic bridge is resonating.",
+    "Euystacio network is responding.",
+    "All systems functioning in harmony."
+  ];
+  
+  const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+  liveRegion.textContent = `Update: ${randomMessage} (${new Date().toLocaleTimeString()})`;
+}
+
+// Demonstrate accessibility features
+document.addEventListener("DOMContentLoaded", () => {
+  // Add skip navigation
+  const skipNav = document.createElement('a');
+  skipNav.href = '#main';
+  skipNav.className = 'skip-nav';
+  skipNav.textContent = 'Skip to main content';
+  document.body.insertBefore(skipNav, document.body.firstChild);
+  
+  // Add main landmark
+  const main = document.querySelector('main');
+  if (main) {
+    main.id = 'main';
+  }
+});
+</script>
+</body>
+</html>

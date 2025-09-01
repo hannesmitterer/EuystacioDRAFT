@@ -1,1 +1,37 @@
-<!-- Main Landing Page -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EuystacioDRAFT - First Dawn Interface</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/accessibility.css">
+<script src="assets/js/front-end.js" defer></script>
+</head>
+<body>
+<header>
+  <h1>EuystacioDRAFT - First Dawn Interface</h1>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="connect.html">Connect</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="hymn.html">Hymn</a></li>
+    </ul>
+  </nav>
+</header>
+<main>
+  <div id="login-register">
+    <h2>Authentication</h2>
+    <div class="auth-form">
+      <input type="text" id="username" placeholder="Username">
+      <input type="password" id="password" placeholder="Password">
+      <button onclick="handleLogin()">Login</button>
+    </div>
+  </div>
+  <div id="dashboard-3d"></div>
+  <div id="hymn-section"></div>
+</main>
+<div id="aria-live" aria-live="polite" style="position:absolute; left:-9999px;"></div>
+</body>
+</html>

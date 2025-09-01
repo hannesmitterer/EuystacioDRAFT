@@ -1,1 +1,42 @@
-<!-- 3D Dashboard Interface -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard - EuystacioDRAFT</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/accessibility.css">
+<script src="assets/js/front-end.js" defer></script>
+<script src="assets/js/dashboard_3d.js" defer></script>
+<script src="assets/js/harmonic_bridge_map.js" defer></script>
+</head>
+<body>
+<header>
+  <h1>Sacred Dashboard</h1>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="connect.html">Connect</a></li>
+      <li><a href="dashboard.html" class="active">Dashboard</a></li>
+      <li><a href="hymn.html">Hymn</a></li>
+    </ul>
+  </nav>
+</header>
+<main>
+  <section id="dashboard-3d" class="dashboard-container">
+    <h2>3D Sacred Interface</h2>
+    <div id="3d-visualization" class="viz-container"></div>
+  </section>
+  <section id="harmonic-bridge" class="bridge-container">
+    <h2>Harmonic Bridge Status</h2>
+    <div id="bridge-map" class="bridge-map"></div>
+    <div id="bridge-status" class="status-display"></div>
+  </section>
+  <section class="metrics-panel">
+    <h2>Sacred Metrics</h2>
+    <div id="metrics-display" class="metrics-grid"></div>
+  </section>
+</main>
+<div id="aria-live" aria-live="polite" style="position:absolute; left:-9999px;"></div>
+</body>
+</html>
