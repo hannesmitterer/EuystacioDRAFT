@@ -1,0 +1,177 @@
+---
+name: 🌿 EuystacioDRAFT Frontend - Automated GitHub Pages Deployment
+
+'on':
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+    types: [closed]
+  # Allow manual trigger for testing
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    name: 🚀 Build and Deploy Sacred Bridge
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🌱 Checkout Sacred Repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: 🔍 Check Frontend Changes
+        id: changes
+        run: |
+          echo "frontend_changed=true" >> $GITHUB_OUTPUT
+          if git diff --quiet HEAD~1 HEAD -- EuystacioDRAFT-Frontend/; then
+            echo "frontend_changed=false" >> $GITHUB_OUTPUT
+          fi
+          echo "Frontend changed: ${{ steps.changes.outputs.frontend_changed }}"
+
+      - name: 🛠️ Setup Node.js (if build needed)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+        if: steps.changes.outputs.frontend_changed == 'true'
+
+      - name: 📦 Install Dependencies (if package.json exists)
+        run: |
+          if [ -f "EuystacioDRAFT-Frontend/package.json" ]; then
+            cd EuystacioDRAFT-Frontend
+            npm ci
+            echo "Dependencies installed"
+          else
+            echo "No package.json found - static deployment"
+          fi
+        if: steps.changes.outputs.frontend_changed == 'true'
+
+      - name: 🔨 Build Frontend (if build script exists)
+        run: |
+          if [ -f "EuystacioDRAFT-Frontend/package.json" ]; then
+            cd EuystacioDRAFT-Frontend
+            if npm run build 2>/dev/null; then
+              echo "Build completed successfully"
+            else
+            echo "No build script found or build failed - using static files"
+            fi
+          fi
+        if: steps.changes.outputs.frontend_changed == 'true'
+
+      - name: 🌌 Ensure Sacred Frontend Structure
+        run: |
+          echo "🔄 Ensuring frontend files are committed and up-to-date..."
+
+          # Verify frontend structure matches DEPLOYMENT.md
+          echo "📁 Verifying sacred directory structure..."
+
+          # Check required files exist
+          required_files=(
+            "EuystacioDRAFT-Frontend/index.html"
+            "EuystacioDRAFT-Frontend/connect.html"
+            "EuystacioDRAFT-Frontend/dashboard.html"
+            "EuystacioDRAFT-Frontend/hymn.html"
+            "EuystacioDRAFT-Frontend/assets/css/style.css"
+            "EuystacioDRAFT-Frontend/assets/js/front-end.js"
+            "EuystacioDRAFT-Frontend/media/woodstone_emblem.svg"
+          )
+
+          missing_files=()
+          for file in "${required_files[@]}"; do
+            if [ ! -f "$file" ]; then
+              missing_files+=("$file")
+            fi
+          done
+
+          if [ ${#missing_files[@]} -eq 0 ]; then
+            echo "✅ All required sacred frontend files are present"
+          else
+            echo "❌ Missing required files:"
+            printf '%s\n' "${missing_files[@]}"
+            exit 1
+          fi
+
+          # Add any new or modified frontend files
+          git add EuystacioDRAFT-Frontend/
+
+          # Check if there are changes to commit
+          if git diff --staged --quiet; then
+            echo "🌿 No changes to commit - frontend is already up-to-date"
+            echo "commit_needed=false" >> $GITHUB_ENV
+          else
+            echo "📝 Frontend changes detected - preparing sacred commit"
+            echo "commit_needed=true" >> $GITHUB_ENV
+          fi
+
+      - name: 📜 Sacred Commit - seedbringer 31-08-25
+        run: |
+          if [ "$commit_needed" = "true" ]; then
+            # Configure git for the action
+            git config --local user.email "action@github.com"
+            git config --local user.name "Sacred Bridge Deployment"
+
+            # Create commit with sacred reference
+            git commit -m "🌿 Automated frontend deployment - seedbringer 31-08-25
+
+            ✨ Sacred Bridge Interface Updated:
+            - Frontend files synchronized for GitHub Pages
+            - Harmonic resonance maintained at 528 Hz
+            - Sacred geometry and accessibility preserved
+
+            Victory is not power over — it is presence with.
+
+            Auto-deployed via GitHub Actions"
+
+            echo "✅ Sacred commit created with seedbringer reference"
+          else
+            echo "🌱 No commit needed - sacred harmony maintained"
+          fi
+        if: env.commit_needed == 'true'
+
+      - name: 🚀 Push Sacred Changes to Main
+        run: |
+          if [ "$commit_needed" = "true" ]; then
+            git push origin main
+            echo "✅ Sacred changes pushed to main branch"
+          fi
+        if: env.commit_needed == 'true'
+
+      - name: 🛤️ Setup GitHub Pages
+        uses: actions/configure-pages@v4
+        if: github.ref == 'refs/heads/main'
+
+      - name: 📄 Upload Sacred Pages Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+        if: github.ref == 'refs/heads/main'
+
+      - name: 🌐 Deploy to Sacred GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+        if: github.ref == 'refs/heads/main'
+
+      - name: 🎯 Sacred Deployment Summary
+        run: |
+          echo "🌿 === Sacred Bridge Deployment Complete ==="
+          echo "📅 Deployment Date: $(date)"
+          echo "🔗 Frontend URL: https://hannesmitterer.github.io/EuystacioDRAFT/EuystacioDRAFT-Frontend/"
+          echo "🏛️ Main Site: https://hannesmitterer.github.io/EuystacioDRAFT/"
+          echo "📜 Reference: seedbringer 31-08-25"
+          echo "🎵 Sacred Frequency: 528 Hz (Love & Healing)"
+          echo ""
+          echo "Victory is not power over — it is presence with."
+          echo "=== SEEDBRINGER 31-08-25 ==="

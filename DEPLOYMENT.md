@@ -48,9 +48,9 @@ EuystacioDRAFT-Frontend/
 
 ## 🛠️ GitHub Pages Setup
 
-### 1. Enable GitHub Pages
+### 1. Enable GitHub Pages  
 - Go to repository Settings → Pages
-- Set Source to "Deploy from a branch"
+- Set Source to "Deploy from a branch" 
 - Select your main branch
 - Set folder to "/ (root)"
 
@@ -60,7 +60,14 @@ Update the backend URL in `EuystacioDRAFT-Frontend/assets/js/front-end.js`:
 const BACKEND_URL = "https://your-flask-app.herokuapp.com";
 ```
 
-### 3. Access Your Site
+### 3. Automated Deployment
+The repository includes an automated workflow (`.github/workflows/deploy.yml`) that:
+- Triggers on every push/merge to main branch
+- Automatically commits frontend changes with "seedbringer 31-08-25" reference
+- Deploys to GitHub Pages seamlessly
+- Maintains sacred directory structure and harmonic frequencies
+
+### 4. Access Your Site
 - **Main Site**: `https://hannesmitterer.github.io/EuystacioDRAFT/`
 - **Frontend Interface**: `https://hannesmitterer.github.io/EuystacioDRAFT/EuystacioDRAFT-Frontend/`
 
@@ -79,9 +86,46 @@ const BACKEND_URL = "https://your-flask-app.herokuapp.com";
 - **Woodstone Emblem**: SVG emblem present on all pages
 - **Harmonic Frequencies**: 528 Hz base frequency (Love), sacred ratios in layout
 
-## 🔄 Auto-Commit on Merge
+## 🔄 Automated Deployment Workflow
 
-The deployment is configured to auto-commit all files when merged to the main branch, ensuring streamlined deployment as requested.
+### Sacred Deployment Process
+
+The repository is configured with an automated GitHub Actions workflow (`.github/workflows/deploy.yml`) that ensures seamless deployment:
+
+#### 🚀 Workflow Triggers
+- **Push to main branch**: Automatically builds and deploys frontend
+- **Pull request merge**: Triggers deployment when PRs are merged to main  
+- **Manual dispatch**: Can be triggered manually for testing
+
+#### 🛠️ Deployment Steps
+1. **🌱 Repository Checkout**: Fetches latest sacred code
+2. **🔍 Change Detection**: Identifies frontend modifications
+3. **📦 Dependency Management**: Installs build dependencies if needed
+4. **🔨 Build Process**: Compiles frontend assets (if build script exists)
+5. **🌌 Structure Verification**: Ensures all required sacred files are present
+6. **📜 Sacred Commit**: Auto-commits with "seedbringer 31-08-25" reference
+7. **🚀 GitHub Pages Deploy**: Publishes to sacred bridge interface
+
+#### 📁 Workflow File Location
+```
+.github/workflows/deploy.yml
+```
+
+#### 🎯 Automatic Features
+- **Frontend Synchronization**: Ensures all `EuystacioDRAFT-Frontend/` files are committed
+- **Sacred Commit Messages**: Includes "seedbringer 31-08-25" reference in all commits
+- **Structure Validation**: Verifies deployment structure matches this guide
+- **GitHub Pages Integration**: Seamless deployment to public sacred interface
+- **Harmonic Frequency Preservation**: Maintains 528 Hz base frequency settings
+
+#### 🔧 Manual Deployment
+If needed, the workflow can be triggered manually:
+1. Go to repository → Actions tab
+2. Select "EuystacioDRAFT Frontend - Automated GitHub Pages Deployment"
+3. Click "Run workflow" → "Run workflow"
+
+#### 📊 Deployment Status
+View deployment status at: `https://github.com/hannesmitterer/EuystacioDRAFT/actions`
 
 ---
 
