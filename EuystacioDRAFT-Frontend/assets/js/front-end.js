@@ -1,6 +1,6 @@
 // EuystacioDRAFT Frontend Core - Enhanced for GitHub Pages
 
-const BACKEND_URL = "https://your-backend-url/render"; // Set to existing backend kernel
+const BACKEND_URL = "https://euystacio-ai-q3hh.onrender.com"; // Set to existing backend kernel
 
 // State management
 let currentUser = null;

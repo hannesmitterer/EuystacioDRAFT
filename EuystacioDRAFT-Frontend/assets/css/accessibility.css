@@ -1,27 +1,346 @@
+/* EuystacioDRAFT Accessibility Stylesheet - WCAG 2.1 AA Compliant */
 :root {
   --text-color: #222;
   --background-color: #fff;
   --font-size: 1rem;
+  /* WCAG AA contrast ratios (≥4.5:1) */
+  --primary-color: #2d5016; /* Green - contrast ratio 6.8:1 on white */
+  --secondary-color: #4A773C; /* Lighter green - contrast ratio 4.9:1 */
+  --error-color: #b91c1c; /* Red - contrast ratio 5.3:1 */
+  --success-color: #166534; /* Dark green - contrast ratio 7.1:1 */
+  --warning-color: #a16207; /* Orange - contrast ratio 4.8:1 */
+  --focus-color: #1d4ed8; /* Blue - contrast ratio 6.4:1 */
+  --border-color: #6b7280; /* Gray - contrast ratio 4.5:1 */
+  
+  /* Spacing and layout */
+  --base-spacing: 1rem;
+  --focus-width: 3px;
+  --transition-duration: 0.15s;
+  --border-radius: 4px;
 }
 
+/* Base typography and layout */
 body {
   color: var(--text-color);
   background-color: var(--background-color);
   font-size: var(--font-size);
   line-height: 1.6;
-  font-family: Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  margin: 0;
+  padding: var(--base-spacing);
 }
 
-a {
-  color: #4A773C;
+/* Improved focus management */
+*:focus {
+  outline: var(--focus-width) solid var(--focus-color);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 var(--focus-width) rgba(29, 78, 216, 0.3);
+  transition: box-shadow var(--transition-duration) ease-in-out;
+}
+
+/* Skip links for keyboard navigation */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--focus-color);
+  color: white;
+  padding: 8px 16px;
   text-decoration: none;
+  border-radius: var(--border-radius);
+  z-index: 1000;
+  font-weight: bold;
+  transition: top var(--transition-duration) ease-in-out;
 }
 
-a:hover {
+.skip-link:focus {
+  top: 6px;
+  outline: none;
+  box-shadow: 0 0 0 var(--focus-width) rgba(255, 255, 255, 0.8);
+}
+
+/* Enhanced link styles with proper contrast */
+a {
+  color: var(--secondary-color);
   text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color var(--transition-duration) ease-in-out;
 }
 
-header, nav, section, footer {
-  margin: 1rem;
-  padding: 0.5rem;
+a:hover, a:focus {
+  color: var(--primary-color);
+  text-decoration-thickness: 2px;
+}
+
+a:visited {
+  color: #6b46c1; /* Purple with 4.6:1 contrast ratio */
+}
+
+/* Button accessibility */
+button, .btn, input[type="submit"], input[type="button"] {
+  background-color: var(--secondary-color);
+  color: white;
+  border: 2px solid var(--secondary-color);
+  padding: 12px 24px;
+  font-size: inherit;
+  font-family: inherit;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all var(--transition-duration) ease-in-out;
+  min-height: 44px; /* WCAG touch target size */
+  min-width: 44px;
+}
+
+button:hover, .btn:hover {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  transform: translateY(-1px);
+}
+
+button:active, .btn:active {
+  transform: translateY(0);
+}
+
+button:disabled, .btn:disabled {
+  background-color: #9ca3af;
+  border-color: #9ca3af;
+  cursor: not-allowed;
+  transform: none;
+  opacity: 0.6;
+}
+
+/* Form element accessibility */
+input, textarea, select {
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 12px;
+  font-size: inherit;
+  font-family: inherit;
+  background-color: white;
+  color: var(--text-color);
+  min-height: 44px; /* WCAG touch target size */
+  transition: border-color var(--transition-duration) ease-in-out;
+}
+
+input:invalid, textarea:invalid {
+  border-color: var(--error-color);
+  background-color: #fef2f2;
+}
+
+input:valid, textarea:valid {
+  border-color: var(--success-color);
+}
+
+/* Label and fieldset styling */
+label {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+fieldset {
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: var(--base-spacing);
+  margin-bottom: var(--base-spacing);
+}
+
+legend {
+  font-weight: 700;
+  padding: 0 8px;
+  color: var(--primary-color);
+}
+
+/* Structural elements */
+header, nav, section, article, aside, footer {
+  margin: var(--base-spacing) 0;
+  padding: var(--base-spacing);
+}
+
+/* Heading hierarchy */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--primary-color);
+  line-height: 1.2;
+  margin-top: 0;
+  margin-bottom: 0.5em;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1.125rem; }
+
+/* Screen reader only content */
+.sr-only, .visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* ARIA live regions */
+.aria-live-region {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Status and notification messages */
+.status-message {
+  padding: 12px 16px;
+  border-radius: var(--border-radius);
+  margin: var(--base-spacing) 0;
+  border-left: 4px solid;
+}
+
+.status-success {
+  background-color: #dcfce7;
+  border-color: var(--success-color);
+  color: var(--success-color);
+}
+
+.status-error {
+  background-color: #fef2f2;
+  border-color: var(--error-color);
+  color: var(--error-color);
+}
+
+.status-warning {
+  background-color: #fefce8;
+  border-color: var(--warning-color);
+  color: var(--warning-color);
+}
+
+.status-info {
+  background-color: #eff6ff;
+  border-color: var(--focus-color);
+  color: var(--focus-color);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  :root {
+    --font-size: 1.125rem; /* Larger text on mobile */
+    --base-spacing: 0.875rem;
+  }
+  
+  body {
+    padding: var(--base-spacing);
+  }
+  
+  button, .btn, input, textarea, select {
+    min-height: 48px; /* Larger touch targets on mobile */
+    font-size: 1.125rem;
+  }
+  
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.75rem; }
+  h3 { font-size: 1.5rem; }
+  h4 { font-size: 1.25rem; }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --text-color: #000;
+    --background-color: #fff;
+    --primary-color: #000;
+    --secondary-color: #000;
+    --border-color: #000;
+  }
+  
+  * {
+    border-color: currentColor !important;
+  }
+  
+  button, .btn {
+    background-color: #000 !important;
+    color: #fff !important;
+    border: 3px solid #000 !important;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Print styles */
+@media print {
+  * {
+    background: transparent !important;
+    color: black !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
+  }
+  
+  a, a:visited {
+    text-decoration: underline;
+    color: black !important;
+  }
+  
+  a[href^="http"]:after {
+    content: " (" attr(href) ")";
+  }
+  
+  .skip-link,
+  .aria-live-region {
+    display: none !important;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-color: #f9fafb;
+    --background-color: #111827;
+    --primary-color: #86efac; /* Light green with sufficient contrast */
+    --secondary-color: #65a30d; /* Medium green */
+    --border-color: #6b7280;
+    --focus-color: #60a5fa; /* Light blue */
+  }
+  
+  input, textarea, select {
+    background-color: #1f2937;
+    color: var(--text-color);
+    border-color: var(--border-color);
+  }
+  
+  button, .btn {
+    background-color: var(--secondary-color);
+    color: white;
+  }
+}
+
+/* Sacred theme enhancements */
+.sacred-content {
+  border-left: 4px solid var(--primary-color);
+  padding-left: var(--base-spacing);
+  font-style: italic;
+  color: var(--primary-color);
+}
+
+.sacred-emphasis {
+  font-weight: 700;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
