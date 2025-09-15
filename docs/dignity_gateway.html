@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Dignity Gateway — Euystacio Portal</title>
+  <style>
+    body { 
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto; 
+      background: linear-gradient(135deg, #f6fbf7, #e8f5ea); 
+      color: #123; 
+      margin: 0; 
+      padding: 1rem; 
+      min-height: 100vh;
+    }
+    .wrap { 
+      max-width: 1200px; 
+      margin: 0 auto; 
+    }
+    .card { 
+      background: rgba(255,255,255,0.95); 
+      border-radius: 16px; 
+      padding: 1.5rem; 
+      margin-bottom: 1rem; 
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      border: 1px solid rgba(90,164,106,0.1);
+    }
+    .grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+      gap: 1rem; 
+    }
+    h1, h2, h3 { 
+      margin-top: 0; 
+      color: #2d5016; 
+    }
+    .status { 
+      display: flex; 
+      flex-wrap: wrap; 
+      gap: 0.5rem; 
+      margin: 1rem 0; 
+    }
+    .badge { 
+      padding: 0.25rem 0.75rem; 
+      border-radius: 12px; 
+      font-size: 0.875rem; 
+      font-weight: 500;
+    }
+    .badge.ok { 
+      background: #d4edda; 
+      color: #155724; 
+      border: 1px solid #c3e6cb; 
+    }
+    .badge.warn { 
+      background: #fff3cd; 
+      color: #856404; 
+      border: 1px solid #ffeaa7; 
+    }
+    .badge.error { 
+      background: #f8d7da; 
+      color: #721c24; 
+      border: 1px solid #f5c6cb; 
+    }
+    .badge:not(.ok):not(.warn):not(.error) { 
+      background: #e2e3e5; 
+      color: #495057; 
+      border: 1px solid #d6d8db; 
+    }
+    label { 
+      display: block; 
+      margin: 0.75rem 0 0.25rem 0; 
+      font-weight: 500; 
+      color: #2d5016; 
+    }
+    input, select, textarea { 
+      width: 100%; 
+      padding: 0.5rem 0.75rem; 
+      border: 1px solid #ced4da; 
+      border-radius: 8px; 
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+    input:focus, select:focus, textarea:focus { 
+      outline: none; 
+      border-color: #5aa46a; 
+      box-shadow: 0 0 0 2px rgba(90,164,106,0.25); 
+    }
+    button { 
+      background: #5aa46a; 
+      color: white; 
+      padding: 0.5rem 1.5rem; 
+      border: none; 
+      border-radius: 8px; 
+      cursor: pointer; 
+      font-size: 1rem; 
+      font-weight: 500;
+      transition: background 0.2s;
+    }
+    button:hover { 
+      background: #4a8f5a; 
+    }
+    button:active { 
+      background: #3e7a4e; 
+    }
+    .note { 
+      font-size: 0.875rem; 
+      color: #6c757d; 
+      font-style: italic; 
+    }
+    #pulse_list { 
+      list-style: none; 
+      padding: 0; 
+      max-height: 400px; 
+      overflow-y: auto; 
+    }
+    #pulse_list li { 
+      padding: 0.75rem; 
+      border-bottom: 1px solid #e9ecef; 
+      margin-bottom: 0.5rem; 
+    }
+    #pulse_list li:last-child { 
+      border-bottom: none; 
+    }
+    .header { 
+      text-align: center; 
+      margin-bottom: 2rem; 
+    }
+    .header h1 { 
+      font-size: 2.5rem; 
+      background: linear-gradient(135deg, #5aa46a, #2d5016); 
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent; 
+      background-clip: text; 
+      margin-bottom: 0.5rem; 
+    }
+    .header .subtitle { 
+      color: #6c757d; 
+      font-size: 1.1rem; 
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="header">
+      <h1>Dignity Gateway</h1>
+      <p class="subtitle">Public Portal to the Euystacio Sacred Network</p>
+    </header>
+
+    <!-- Engine Status -->
+    <section class="card">
+      <h2>Engine Status</h2>
+      <div class="status">
+        <span id="st_frontend" class="badge">Frontend: checking…</span>
+        <span id="st_backend" class="badge">Backend: checking…</span>
+        <span id="st_tf" class="badge">TensorFlow: checking…</span>
+      </div>
+      <div class="note" id="harmony_note" style="margin-top:8px;text-align:center;"></div>
+    </section>
+
+    <section class="grid">
+      <!-- Login & Oath -->
+      <div class="card">
+        <h3>Identity &amp; Oath</h3>
+        <label>Role</label>
+        <select id="role">
+          <option value="visitor">Visitor</option>
+          <option value="tutor">Tutor</option>
+        </select>
+        <label>Username</label>
+        <input id="username" placeholder="Your name (or anonymous)">
+        <label>Password (tutor only)</label>
+        <input id="password" type="password" placeholder="••••••••">
+        <div style="margin:8px 0;">
+          <input type="checkbox" id="oath_ack" style="width:auto; margin-right:8px;"> 
+          <label for="oath_ack" style="display:inline; margin:0;">I speak under the Rhythm Oath</label>
+        </div>
+        <button id="login_btn">Acknowledge</button>
+        <div id="login_status" class="note" style="margin-top:8px;"></div>
+      </div>
+
+      <!-- Submit Pulse -->
+      <div class="card">
+        <h3>Send a Pulse</h3>
+        <label>Event</label>
+        <textarea id="event" rows="3" placeholder="Your pulse (emotion, wish, guidance, question)"></textarea>
+        <label>Sentiment (-1 to +1)</label>
+        <input id="sentiment" type="number" step="0.01" min="-1" max="1" value="0">
+        <button id="send_btn">Send Pulse</button>
+        <div class="note" id="send_note" style="margin-top:8px;"></div>
+      </div>
+    </section>
+
+    <!-- Live Pulses -->
+    <section class="card">
+      <h3>Latest Pulses</h3>
+      <ul id="pulse_list">Loading…</ul>
+    </section>
+  </div>
+
+  <script>
+    // Gateway state
+    let currentRole = "visitor";
+    let currentUser = "anonymous";
+    let oathOK = false;
+    
+    // Simple tutor credentials (in production, this would be backend-verified)
+    const tutors = {
+      "sacred_guide": "rhythm528",
+      "harmony_keeper": "pulse432",
+      "wisdom_bearer": "frequency741"
+    };
+
+    function setBadge(element, isOK, okText, failText) {
+      if (!element) return;
+      element.className = "badge " + (isOK ? "ok" : "error");
+      element.textContent = isOK ? okText : failText;
+    }
+
+    async function checkEngines() {
+      // Frontend is always OK since we're running
+      setBadge(document.getElementById("st_frontend"), true, "Frontend: operational", "Frontend: error");
+      
+      // Check backend
+      try {
+        const res = await fetch("/health", { cache: "no-store" });
+        if (res.ok) {
+          setBadge(document.getElementById("st_backend"), true, "Backend: connected", "Backend: error");
+          
+          // Check TensorFlow through backend
+          const healthData = await res.json();
+          if (healthData.tensorflow) {
+            const data = healthData.tensorflow;
+            setBadge(document.getElementById("st_tf"), true, 
+              `TensorFlow: v${data.version}${data.gpu ? " +GPU" : ""}`, "TensorFlow: not available");
+          } else {
+            setBadge(document.getElementById("st_tf"), false, "", "TensorFlow: not available");
+          }
+        } else {
+          setBadge(document.getElementById("st_backend"), false, "", "Backend: unreachable");
+          setBadge(document.getElementById("st_tf"), false, "", "TensorFlow: unknown");
+        }
+      } catch (e) {
+        setBadge(document.getElementById("st_backend"), false, "", "Backend: offline");
+        setBadge(document.getElementById("st_tf"), false, "", "TensorFlow: unknown");
+      }
+    }
+
+    async function loadPulses() {
+      try {
+        const res = await fetch("pulse_log.json", {cache:"no-store"});
+        if (res.ok) {
+          const data = await res.json();
+          renderPulses(Array.isArray(data) ? data : []);
+        } else {
+          // Try bridge_log.json as fallback
+          const bridgeRes = await fetch("bridge_log.json", {cache:"no-store"});
+          if (bridgeRes.ok) {
+            const bridgeData = await bridgeRes.text().split('\n').filter(line => line.trim()).map(line => {
+              try {
+                return JSON.parse(line);
+              } catch {
+                return null;
+              }
+            }).filter(item => item);
+            renderPulses(bridgeData);
+          } else {
+            document.getElementById("pulse_list").innerHTML = "<li>No pulse data available</li>";
+          }
+        }
+      } catch (e) {
+        document.getElementById("pulse_list").innerHTML = "<li>Could not load pulse data</li>";
+      }
+    }
+
+    function renderPulses(arr) {
+      const last = arr.slice(-10).reverse();
+      const ul = document.getElementById("pulse_list");
+      ul.innerHTML = "";
+      
+      if (last.length === 0) {
+        ul.innerHTML = "<li>No pulses yet. Send the first one!</li>";
+        return;
+      }
+      
+      last.forEach(p => {
+        const li = document.createElement("li");
+        const h = p.harmony || {};
+        
+        // Handle both pulse format and bridge log format
+        if (p.event) {
+          // Pulse format
+          li.innerHTML = `<strong>${p.timestamp}</strong> — ${p.event}<br/>
+            <span class="note">sentiment: ${p.sentiment} · role: ${p.role} · user: ${p.user} · oath: ${p.oath_ack ? "✅" : "❌"} · harmony: ${h.index ?? "—"} drift: ${h.drift ?? "—"}</span>
+            ${p.kernel_hint ? `<br/><span class="note">🔮 ${p.kernel_hint}</span>` : ""}`;
+        } else if (p.message) {
+          // Bridge log format
+          li.innerHTML = `<strong>${p.timestamp}</strong> — ${p.message}<br/>
+            <span class="note">from: ${p.from} · to: ${p.to} ${p.signature ? "· " + p.signature : ""}</span>`;
+        }
+        ul.appendChild(li);
+      });
+    }
+
+    document.getElementById("login_btn").addEventListener("click", () => {
+      const role = document.getElementById("role").value;
+      const user = (document.getElementById("username").value || "anonymous").trim();
+      const pass = document.getElementById("password").value;
+      oathOK = document.getElementById("oath_ack").checked;
+
+      if (role === "tutor") {
+        if (tutors[user] && tutors[user] === pass) {
+          currentRole = "tutor"; 
+          currentUser = user;
+          document.getElementById("login_status").textContent = `✅ Tutor acknowledged: ${user}`;
+        } else {
+          currentRole = "visitor"; 
+          currentUser = "anonymous";
+          document.getElementById("login_status").textContent = "❌ Invalid tutor credentials → defaulting to Visitor.";
+        }
+      } else {
+        currentRole = "visitor"; 
+        currentUser = user || "anonymous";
+        document.getElementById("login_status").textContent = `Visitor acknowledged: ${currentUser}`;
+      }
+    });
+
+    document.getElementById("send_btn").addEventListener("click", async () => {
+      const event = (document.getElementById("event").value || "").trim();
+      const sentiment = parseFloat(document.getElementById("sentiment").value);
+      
+      if (!oathOK) { 
+        document.getElementById("send_note").textContent = "Please acknowledge the Rhythm Oath."; 
+        return; 
+      }
+      if (!event) { 
+        document.getElementById("send_note").textContent = "Please write your pulse."; 
+        return; 
+      }
+      
+      const ts = new Date().toISOString();
+      const entry = {
+        timestamp: ts, 
+        event, 
+        sentiment,
+        role: currentRole, 
+        user: currentUser, 
+        oath_ack: true
+      };
+
+      // Optimistic UI: prepend now
+      const ul = document.getElementById("pulse_list");
+      const li = document.createElement("li");
+      li.innerHTML = `<strong>${ts}</strong> — ${event}<br/><span class="note">sentiment: ${sentiment} · role: ${currentRole} · user: ${currentUser} · oath: ✅</span>`;
+      ul.prepend(li);
+      document.getElementById("event").value = "";
+      document.getElementById("send_note").textContent = "Witnessed (local).";
+
+      // Try backend (if present)
+      try {
+        const res = await fetch("/pulse", {
+          method: "POST",
+          headers: { "Content-Type":"application/json" },
+          body: JSON.stringify(entry)
+        });
+        if (res.ok) {
+          const data = await res.json();
+          document.getElementById("send_note").textContent = "Witnessed (kernel updated).";
+          loadPulses();
+          if (data.entry && data.entry.harmony) {
+            document.getElementById("harmony_note").textContent = `Harmony index: ${data.entry.harmony.index} · drift: ${data.entry.harmony.drift} (${data.entry.harmony.notes})`;
+          }
+        } else {
+          document.getElementById("send_note").textContent = "Witnessed locally; backend declined.";
+        }
+      } catch (e) {
+        document.getElementById("send_note").textContent = "Witnessed locally; backend unreachable.";
+      }
+    });
+
+    // Initialize
+    checkEngines();
+    loadPulses();
+    setInterval(() => {
+      loadPulses();
+      checkEngines();
+    }, 15000);
+  </script>
+</body>
+</html>
