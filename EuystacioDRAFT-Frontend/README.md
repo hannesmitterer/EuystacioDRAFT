@@ -2,6 +2,9 @@
 
 Sacred Bridge Interface for GitHub Pages deployment, ready to connect to the existing Flask backend kernel.
 
+> **Note:** This frontend is now connected to the live euystacio-helmi-AI backend at https://euystacio-ai-q3hh.onrender.com/.  
+> You can update the connection URL in `assets/js/front-end.js` as needed for local development or deployment changes.
+
 ## 🌌 Overview
 
 This frontend package provides a complete web interface for the EuystacioDRAFT sacred bridge experience, featuring:
@@ -47,7 +50,7 @@ EuystacioDRAFT-Frontend/
 Update the backend URL in `assets/js/front-end.js`:
 
 ```javascript
-const BACKEND_URL = "https://your-actual-backend-url";
+const BACKEND_URL = "https://euystacio-ai-q3hh.onrender.com";
 ```
 
 The frontend expects these backend endpoints:
@@ -91,7 +94,7 @@ The frontend expects these backend endpoints:
 ### Backend Connection
 Edit `assets/js/front-end.js` and update:
 ```javascript
-const BACKEND_URL = "https://your-flask-app.herokuapp.com";
+const BACKEND_URL = "https://euystacio-ai-q3hh.onrender.com";
 ```
 
 ### Sacred Content
